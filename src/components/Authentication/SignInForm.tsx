@@ -1,8 +1,15 @@
-
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignInForm: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleSignIn = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Navigate to the main dashboard after sign in
+    navigate("/dashboard/ecommerce");
+  };
+
   return (
     <>
       <div className="auth-main-content bg-white dark:bg-[#0a0e19] py-[60px] md:py-[80px] lg:py-[135px]">
@@ -90,45 +97,47 @@ const SignInForm: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mb-[15px] relative">
-                <label className="mb-[10px] md:mb-[12px] text-black dark:text-white font-medium block">
-                  Email Address
-                </label>
-                <input
-                  type="text"
-                  className="h-[55px] rounded-md text-black dark:text-white border border-gray-200 dark:border-[#172036] bg-white dark:bg-[#0c1427] px-[17px] block w-full outline-0 transition-all placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-primary-500"
-                  placeholder="example@trezo.com"
-                />
-              </div>
+              <form onSubmit={handleSignIn}>
+                <div className="mb-[15px] relative">
+                  <label className="mb-[10px] md:mb-[12px] text-black dark:text-white font-medium block">
+                    Email Address
+                  </label>
+                  <input
+                    type="text"
+                    className="h-[55px] rounded-md text-black dark:text-white border border-gray-200 dark:border-[#172036] bg-white dark:bg-[#0c1427] px-[17px] block w-full outline-0 transition-all placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-primary-500"
+                    placeholder="example@trezo.com"
+                  />
+                </div>
 
-              <div className="mb-[15px] relative" id="passwordHideShow">
-                <label className="mb-[10px] md:mb-[12px] text-black dark:text-white font-medium block">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="h-[55px] rounded-md text-black dark:text-white border border-gray-200 dark:border-[#172036] bg-white dark:bg-[#0c1427] px-[17px] block w-full outline-0 transition-all placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-primary-500"
-                  id="password"
-                  placeholder="Type password"
-                /> 
-              </div>
+                <div className="mb-[15px] relative" id="passwordHideShow">
+                  <label className="mb-[10px] md:mb-[12px] text-black dark:text-white font-medium block">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    className="h-[55px] rounded-md text-black dark:text-white border border-gray-200 dark:border-[#172036] bg-white dark:bg-[#0c1427] px-[17px] block w-full outline-0 transition-all placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-primary-500"
+                    id="password"
+                    placeholder="Type password"
+                  />
+                </div>
 
-              <Link
-                to="/authentication/forgot-password"
-                className="inline-block text-primary-500 transition-all font-semibold hover:underline"
-              >
-                Forgot Password?
-              </Link>
+                <Link
+                  to="/authentication/forgot-password"
+                  className="inline-block text-primary-500 transition-all font-semibold hover:underline"
+                >
+                  Forgot Password?
+                </Link>
 
-              <button
-                type="submit"
-                className="md:text-md block w-full text-center transition-all rounded-md font-medium mt-[20px] md:mt-[25px] py-[12px] px-[25px] text-white bg-primary-500 hover:bg-primary-400"
-              >
-                <span className="flex items-center justify-center gap-[5px]">
-                  <i className="material-symbols-outlined">login</i>
-                  Sign In
-                </span>
-              </button>
+                <button
+                  type="submit"
+                  className="md:text-md block w-full text-center transition-all rounded-md font-medium mt-[20px] md:mt-[25px] py-[12px] px-[25px] text-white bg-primary-500 hover:bg-primary-400"
+                >
+                  <span className="flex items-center justify-center gap-[5px]">
+                    <i className="material-symbols-outlined">login</i>
+                    Sign In
+                  </span>
+                </button>
+              </form>
 
               <p className="mt-[15px] md:mt-[20px]">
                 Don’t have an account.{" "}

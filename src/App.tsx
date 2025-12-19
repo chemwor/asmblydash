@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import SidebarMenu from "./components/Layout/SidebarMenu";
 import Footer from "./components/Layout/Footer";
@@ -273,13 +273,10 @@ import Connections from "./pages/settings/Connections";
 import PrivacyPolicy from "./pages/settings/PrivacyPolicy";
 import TermsConditions from "./pages/settings/TermsConditions";
 
-const App: React.FC = () => {
+// Create a new component to handle the app layout with location tracking
+const AppContent: React.FC = () => {
   const [active, setActive] = useState<boolean>(false);
-  const [pathname, setPathname] = useState<string>("");
-
-  useEffect(() => {
-    setPathname(window.location.pathname); // Get the current path
-  }, []);
+  const location = useLocation();
 
   const toggleActive = (): void => {
     setActive(!active);
@@ -299,455 +296,465 @@ const App: React.FC = () => {
     "/front-pages/team",
     "/front-pages/faq",
     "/front-pages/contact",
-  ].includes(pathname);
+  ].includes(location.pathname);
 
   return (
     <>
       <div
         className={`main-content-wrap transition-all ${active ? "active" : ""}`}
       >
-        <Router>
+        {!isAuthPage && (
+          <>
+            <SidebarMenu toggleActive={toggleActive} />
+          </>
+        )}
+
+        <div className="main-content transition-all flex flex-col overflow-hidden min-h-screen">
           {!isAuthPage && (
             <>
-              <SidebarMenu toggleActive={toggleActive} />
+              <Header toggleActive={toggleActive} />
             </>
           )}
 
-          <div className="main-content transition-all flex flex-col overflow-hidden min-h-screen">
-            {!isAuthPage && (
-              <>
-                <Header toggleActive={toggleActive} />
-              </>
-            )}
+          <Routes>
+            {/* Front Pages */}
+            <Route path="/" element={<Home />} />
+            <Route path="/front-pages/features" element={<Features />} />
+            <Route path="/front-pages/team" element={<Team />} />
+            <Route path="/front-pages/faq" element={<FpFaq />} />
+            <Route path="/front-pages/contact" element={<Contact />} />
 
-            <Routes>
-              {/* Front Pages */}
-              <Route path="/" element={<Home />} />
-              <Route path="/front-pages/features" element={<Features />} />
-              <Route path="/front-pages/team" element={<Team />} />
-              <Route path="/front-pages/faq" element={<FpFaq />} />
-              <Route path="/front-pages/contact" element={<Contact />} />
+            {/* Dashboard */}
+            <Route path="/dashboard/ecommerce" element={<Ecommerce />} />
+            <Route path="/dashboard/crm" element={<Crm />} />
+            <Route
+              path="/dashboard/project-management"
+              element={<ProjectManagement />}
+            />
+            <Route path="/dashboard/lms" element={<Lms />} />
+            <Route path="/dashboard/helpdesk" element={<HelpDesk />} />
+            <Route path="/dashboard/analytics" element={<Analytics />} />
+            <Route path="/dashboard/crypto" element={<Crypto />} />
+            <Route path="/dashboard/sales" element={<Sales />} />
+            <Route path="/dashboard/hospital" element={<Hospital />} />
+            <Route path="/dashboard/hrm" element={<Hrm />} />
+            <Route path="/dashboard/school" element={<School />} />
+            <Route path="/dashboard/call-center" element={<CallCenter />} />
+            <Route path="/dashboard/marketing" element={<Marketing />} />
+            <Route path="/dashboard/nft" element={<Nft />} />
+            <Route path="/dashboard/saas" element={<Saas />} />
+            <Route path="/dashboard/real-estate" element={<RealEstate />} />
+            <Route path="/dashboard/shipment" element={<Shipment />} />
+            <Route path="/dashboard/finance" element={<Finance />} />
+            <Route path="/dashboard/pos-system" element={<PosSystem />} />
+            <Route path="/dashboard/podcast" element={<Podcast />} />
+            <Route path="/dashboard/social-media" element={<SocialMedia />} />
+            <Route path="/dashboard/doctor" element={<Doctor />} />
+            <Route path="/dashboard/beauty-salon" element={<BeautySalon />} />
+            <Route
+              path="/dashboard/store-analysis"
+              element={<StoreAnalysis />}
+            />
+            <Route path="/dashboard/restaurant" element={<Restaurant />} />
+            <Route path="/dashboard/hotel" element={<Hotel />} />
+            <Route
+              path="/dashboard/real-estate-agent"
+              element={<RealEstateAgent />}
+            />
+            <Route path="/dashboard/credit-card" element={<CreditCard />} />
+            <Route
+              path="/dashboard/crypto-trader"
+              element={<CryptoTrader />}
+            />
+            <Route
+              path="/dashboard/crypto-performance"
+              element={<CryptoPerformance />}
+            />
 
-              {/* Dashboard */}
-              <Route path="/dashboard/ecommerce" element={<Ecommerce />} />
-              <Route path="/dashboard/crm" element={<Crm />} />
-              <Route
-                path="/dashboard/project-management"
-                element={<ProjectManagement />}
-              />
-              <Route path="/dashboard/lms" element={<Lms />} />
-              <Route path="/dashboard/helpdesk" element={<HelpDesk />} />
-              <Route path="/dashboard/analytics" element={<Analytics />} />
-              <Route path="/dashboard/crypto" element={<Crypto />} />
-              <Route path="/dashboard/sales" element={<Sales />} />
-              <Route path="/dashboard/hospital" element={<Hospital />} />
-              <Route path="/dashboard/hrm" element={<Hrm />} />
-              <Route path="/dashboard/school" element={<School />} />
-              <Route path="/dashboard/call-center" element={<CallCenter />} />
-              <Route path="/dashboard/marketing" element={<Marketing />} />
-              <Route path="/dashboard/nft" element={<Nft />} />
-              <Route path="/dashboard/saas" element={<Saas />} />
-              <Route path="/dashboard/real-estate" element={<RealEstate />} />
-              <Route path="/dashboard/shipment" element={<Shipment />} />
-              <Route path="/dashboard/finance" element={<Finance />} />
-              <Route path="/dashboard/pos-system" element={<PosSystem />} />
-              <Route path="/dashboard/podcast" element={<Podcast />} />
-              <Route path="/dashboard/social-media" element={<SocialMedia />} />
-              <Route path="/dashboard/doctor" element={<Doctor />} />
-              <Route path="/dashboard/beauty-salon" element={<BeautySalon />} />
-              <Route
-                path="/dashboard/store-analysis"
-                element={<StoreAnalysis />}
-              />
-              <Route path="/dashboard/restaurant" element={<Restaurant />} />
-              <Route path="/dashboard/hotel" element={<Hotel />} />
-              <Route
-                path="/dashboard/real-estate-agent"
-                element={<RealEstateAgent />}
-              />
-              <Route path="/dashboard/credit-card" element={<CreditCard />} />
-              <Route
-                path="/dashboard/crypto-trader"
-                element={<CryptoTrader />}
-              />
-              <Route
-                path="/dashboard/crypto-performance"
-                element={<CryptoPerformance />}
-              />
+            {/* Apps */}
+            <Route path="/apps/to-do-list" element={<ToDoList />} />
+            <Route path="/apps/calendar" element={<Calendar />} />
+            <Route path="/apps/contacts" element={<Contacts />} />
+            <Route path="/apps/chat" element={<Chat />} />
 
-              {/* Apps */}
-              <Route path="/apps/to-do-list" element={<ToDoList />} />
-              <Route path="/apps/calendar" element={<Calendar />} />
-              <Route path="/apps/contacts" element={<Contacts />} />
-              <Route path="/apps/chat" element={<Chat />} />
+            <Route path="/apps/email/inbox" element={<Inbox />} />
+            <Route path="/apps/email/promotions" element={<Promotions />} />
+            <Route path="/apps/email/compose" element={<Compose />} />
+            <Route path="/apps/email/read" element={<Read />} />
 
-              <Route path="/apps/email/inbox" element={<Inbox />} />
-              <Route path="/apps/email/promotions" element={<Promotions />} />
-              <Route path="/apps/email/compose" element={<Compose />} />
-              <Route path="/apps/email/read" element={<Read />} />
+            <Route path="/apps/kanban-board" element={<KanbanBoard />} />
 
-              <Route path="/apps/kanban-board" element={<KanbanBoard />} />
+            <Route path="/apps/file-manager/my-drive" element={<MyDrive />} />
+            <Route path="/apps/file-manager/assets" element={<Assets />} />
+            <Route
+              path="/apps/file-manager/projects"
+              element={<Projects />}
+            />
+            <Route
+              path="/apps/file-manager/personal"
+              element={<Personal />}
+            />
+            <Route
+              path="/apps/file-manager/applications"
+              element={<Applications />}
+            />
+            <Route
+              path="/apps/file-manager/documents"
+              element={<Documents />}
+            />
+            <Route path="/apps/file-manager/media" element={<Media />} />
+            <Route path="/apps/file-manager/recents" element={<Recents />} />
+            <Route
+              path="/apps/file-manager/important"
+              element={<Important />}
+            />
 
-              <Route path="/apps/file-manager/my-drive" element={<MyDrive />} />
-              <Route path="/apps/file-manager/assets" element={<Assets />} />
-              <Route
-                path="/apps/file-manager/projects"
-                element={<Projects />}
-              />
-              <Route
-                path="/apps/file-manager/personal"
-                element={<Personal />}
-              />
-              <Route
-                path="/apps/file-manager/applications"
-                element={<Applications />}
-              />
-              <Route
-                path="/apps/file-manager/documents"
-                element={<Documents />}
-              />
-              <Route path="/apps/file-manager/media" element={<Media />} />
-              <Route path="/apps/file-manager/recents" element={<Recents />} />
-              <Route
-                path="/apps/file-manager/important"
-                element={<Important />}
-              />
+            {/* Pages */}
+            {/* Ecommerce Pages */}
+            <Route
+              path="/ecommerce/products-grid"
+              element={<ProductsGrid />}
+            />
+            <Route
+              path="/ecommerce/products-list"
+              element={<ProductsList />}
+            />
+            <Route
+              path="/ecommerce/product-details"
+              element={<ProductDetails />}
+            />
+            <Route
+              path="/ecommerce/create-product"
+              element={<CreateProduct />}
+            />
+            <Route path="/ecommerce/edit-product" element={<EditProduct />} />
+            <Route path="/ecommerce/cart" element={<Cart />} />
+            <Route path="/ecommerce/checkout" element={<Checkout />} />
+            <Route path="/ecommerce/orders" element={<Orders />} />
+            <Route
+              path="/ecommerce/order-details"
+              element={<OrderDetails />}
+            />
+            <Route path="/ecommerce/create-order" element={<CreateOrder />} />
+            <Route
+              path="/ecommerce/order-tracking"
+              element={<OrderTracking />}
+            />
+            <Route path="/ecommerce/customers" element={<Customers />} />
+            <Route
+              path="/ecommerce/customer-details"
+              element={<CustomerDetails />}
+            />
+            <Route path="/ecommerce/categories" element={<Categories />} />
+            <Route path="/ecommerce/sellers" element={<Sellers />} />
+            <Route
+              path="/ecommerce/seller-details"
+              element={<SellerDetails />}
+            />
+            <Route
+              path="/ecommerce/create-seller"
+              element={<CreateSeller />}
+            />
+            <Route path="/ecommerce/reviews" element={<Reviews />} />
+            <Route path="/ecommerce/refunds" element={<Refunds />} />
 
-              {/* Pages */}
-              {/* Ecommerce Pages */}
-              <Route
-                path="/ecommerce/products-grid"
-                element={<ProductsGrid />}
-              />
-              <Route
-                path="/ecommerce/products-list"
-                element={<ProductsList />}
-              />
-              <Route
-                path="/ecommerce/product-details"
-                element={<ProductDetails />}
-              />
-              <Route
-                path="/ecommerce/create-product"
-                element={<CreateProduct />}
-              />
-              <Route path="/ecommerce/edit-product" element={<EditProduct />} />
-              <Route path="/ecommerce/cart" element={<Cart />} />
-              <Route path="/ecommerce/checkout" element={<Checkout />} />
-              <Route path="/ecommerce/orders" element={<Orders />} />
-              <Route
-                path="/ecommerce/order-details"
-                element={<OrderDetails />}
-              />
-              <Route path="/ecommerce/create-order" element={<CreateOrder />} />
-              <Route
-                path="/ecommerce/order-tracking"
-                element={<OrderTracking />}
-              />
-              <Route path="/ecommerce/customers" element={<Customers />} />
-              <Route
-                path="/ecommerce/customer-details"
-                element={<CustomerDetails />}
-              />
-              <Route path="/ecommerce/categories" element={<Categories />} />
-              <Route path="/ecommerce/sellers" element={<Sellers />} />
-              <Route
-                path="/ecommerce/seller-details"
-                element={<SellerDetails />}
-              />
-              <Route
-                path="/ecommerce/create-seller"
-                element={<CreateSeller />}
-              />
-              <Route path="/ecommerce/reviews" element={<Reviews />} />
-              <Route path="/ecommerce/refunds" element={<Refunds />} />
+            {/* Crm Pages */}
+            <Route path="/crm/contacts" element={<CrmContacts />} />
+            <Route path="/crm/customers" element={<CrmCustomers />} />
+            <Route path="/crm/leads" element={<Leads />} />
+            <Route path="/crm/deals" element={<Deals />} />
+            <Route path="/crm/deals" element={<Deals />} />
 
-              {/* Crm Pages */}
-              <Route path="/crm/contacts" element={<CrmContacts />} />
-              <Route path="/crm/customers" element={<CrmCustomers />} />
-              <Route path="/crm/leads" element={<Leads />} />
-              <Route path="/crm/deals" element={<Deals />} />
-              <Route path="/crm/deals" element={<Deals />} />
+            {/* Project Management Pages */}
+            <Route
+              path="/project-management/project-overview"
+              element={<ProjectOverview />}
+            />
+            <Route
+              path="/project-management/projects-list"
+              element={<ProjectsList />}
+            />
+            <Route
+              path="/project-management/create-project"
+              element={<CreateProject />}
+            />
+            <Route
+              path="/project-management/clients"
+              element={<PMClients />}
+            />
+            <Route path="/project-management/teams" element={<PMTeams />} />
+            <Route
+              path="/project-management/kanban-board"
+              element={<PMKanbanBoard />}
+            />
+            <Route path="/project-management/users" element={<PMUsers />} />
 
-              {/* Project Management Pages */}
-              <Route
-                path="/project-management/project-overview"
-                element={<ProjectOverview />}
-              />
-              <Route
-                path="/project-management/projects-list"
-                element={<ProjectsList />}
-              />
-              <Route
-                path="/project-management/create-project"
-                element={<CreateProject />}
-              />
-              <Route
-                path="/project-management/clients"
-                element={<PMClients />}
-              />
-              <Route path="/project-management/teams" element={<PMTeams />} />
-              <Route
-                path="/project-management/kanban-board"
-                element={<PMKanbanBoard />}
-              />
-              <Route path="/project-management/users" element={<PMUsers />} />
+            {/* LMS Pages */}
+            <Route path="/lms/courses-list" element={<CoursesList />} />
+            <Route path="/lms/course-details" element={<CourseDetails />} />
+            <Route path="/lms/lesson-preview" element={<LessonPreview />} />
+            <Route path="/lms/create-course" element={<CreateCourse />} />
+            <Route path="/lms/edit-course" element={<EditCourse />} />
+            <Route path="/lms/instructors" element={<Instructors />} />
 
-              {/* LMS Pages */}
-              <Route path="/lms/courses-list" element={<CoursesList />} />
-              <Route path="/lms/course-details" element={<CourseDetails />} />
-              <Route path="/lms/lesson-preview" element={<LessonPreview />} />
-              <Route path="/lms/create-course" element={<CreateCourse />} />
-              <Route path="/lms/edit-course" element={<EditCourse />} />
-              <Route path="/lms/instructors" element={<Instructors />} />
+            {/* Helpdesk Pages */}
+            <Route path="/helpdesk/tickets" element={<Tickets />} />
+            <Route
+              path="/helpdesk/ticket-details"
+              element={<TicketDetails />}
+            />
+            <Route path="/helpdesk/agents" element={<Agents />} />
+            <Route path="/helpdesk/reports" element={<Reports />} />
 
-              {/* Helpdesk Pages */}
-              <Route path="/helpdesk/tickets" element={<Tickets />} />
-              <Route
-                path="/helpdesk/ticket-details"
-                element={<TicketDetails />}
-              />
-              <Route path="/helpdesk/agents" element={<Agents />} />
-              <Route path="/helpdesk/reports" element={<Reports />} />
+            {/* NFT Pages */}
+            <Route path="/nft/marketplace" element={<Marketplace />} />
+            <Route path="/nft/explore-all" element={<ExploreAll />} />
+            <Route path="/nft/live-auction" element={<LiveAuction />} />
+            <Route path="/nft/nft-details" element={<NftDetails />} />
+            <Route path="/nft/creators" element={<Creators />} />
+            <Route path="/nft/creator-details" element={<CreatorDetails />} />
+            <Route path="/nft/wallet-connect" element={<WalletConnect />} />
+            <Route path="/nft/create-nft" element={<CreateNft />} />
 
-              {/* NFT Pages */}
-              <Route path="/nft/marketplace" element={<Marketplace />} />
-              <Route path="/nft/explore-all" element={<ExploreAll />} />
-              <Route path="/nft/live-auction" element={<LiveAuction />} />
-              <Route path="/nft/nft-details" element={<NftDetails />} />
-              <Route path="/nft/creators" element={<Creators />} />
-              <Route path="/nft/creator-details" element={<CreatorDetails />} />
-              <Route path="/nft/wallet-connect" element={<WalletConnect />} />
-              <Route path="/nft/create-nft" element={<CreateNft />} />
+            {/* Real Estate Pages */}
+            <Route
+              path="/real-estate/property-list"
+              element={<PropertyList />}
+            />
+            <Route
+              path="/real-estate/property-details"
+              element={<PropertyDetails />}
+            />
+            <Route
+              path="/real-estate/add-property"
+              element={<AddProperty />}
+            />
+            <Route path="/real-estate/agents" element={<ReAgents />} />
+            <Route
+              path="/real-estate/agent-details"
+              element={<AgentDetails />}
+            />
+            <Route path="/real-estate/add-agent" element={<AddAgent />} />
+            <Route path="/real-estate/customers" element={<ReCustomers />} />
 
-              {/* Real Estate Pages */}
-              <Route
-                path="/real-estate/property-list"
-                element={<PropertyList />}
-              />
-              <Route
-                path="/real-estate/property-details"
-                element={<PropertyDetails />}
-              />
-              <Route
-                path="/real-estate/add-property"
-                element={<AddProperty />}
-              />
-              <Route path="/real-estate/agents" element={<ReAgents />} />
-              <Route
-                path="/real-estate/agent-details"
-                element={<AgentDetails />}
-              />
-              <Route path="/real-estate/add-agent" element={<AddAgent />} />
-              <Route path="/real-estate/customers" element={<ReCustomers />} />
+            {/* Finance Pages */}
+            <Route path="/finance/wallet" element={<Wallet />} />
+            <Route path="/finance/transactions" element={<Transactions />} />
 
-              {/* Finance Pages */}
-              <Route path="/finance/wallet" element={<Wallet />} />
-              <Route path="/finance/transactions" element={<Transactions />} />
+            {/* Doctor Pages */}
+            <Route path="/doctor/patients-list" element={<PatientsList />} />
+            <Route path="/doctor/add-patient" element={<AddPatient />} />
+            <Route
+              path="/doctor/patient-details"
+              element={<PatientDetails />}
+            />
+            <Route path="/doctor/appointments" element={<Appointments />} />
+            <Route path="/doctor/prescriptions" element={<Prescriptions />} />
+            <Route
+              path="/doctor/write-prescription"
+              element={<WritePrescription />}
+            />
 
-              {/* Doctor Pages */}
-              <Route path="/doctor/patients-list" element={<PatientsList />} />
-              <Route path="/doctor/add-patient" element={<AddPatient />} />
-              <Route
-                path="/doctor/patient-details"
-                element={<PatientDetails />}
-              />
-              <Route path="/doctor/appointments" element={<Appointments />} />
-              <Route path="/doctor/prescriptions" element={<Prescriptions />} />
-              <Route
-                path="/doctor/write-prescription"
-                element={<WritePrescription />}
-              />
+            {/* Restaurant Pages */}
+            <Route path="/restaurant/menus" element={<Menus />} />
+            <Route
+              path="/restaurant/dish-details"
+              element={<DishDetails />}
+            />
 
-              {/* Restaurant Pages */}
-              <Route path="/restaurant/menus" element={<Menus />} />
-              <Route
-                path="/restaurant/dish-details"
-                element={<DishDetails />}
-              />
+            {/* Hotel Pages */}
+            <Route path="/hotel/rooms-list" element={<RoomsList />} />
+            <Route path="/hotel/room-details" element={<RoomDetails />} />
+            <Route path="/hotel/guests-list" element={<GuestsList />} />
 
-              {/* Hotel Pages */}
-              <Route path="/hotel/rooms-list" element={<RoomsList />} />
-              <Route path="/hotel/room-details" element={<RoomDetails />} />
-              <Route path="/hotel/guests-list" element={<GuestsList />} />
+            {/* Real Estate Agent Pages */}
+            <Route
+              path="/real-estate-agent/properties"
+              element={<Properties />}
+            />
+            <Route
+              path="/real-estate-agent/property-details"
+              element={<ReaPropertyDetails />}
+            />
 
-              {/* Real Estate Agent Pages */}
-              <Route
-                path="/real-estate-agent/properties"
-                element={<Properties />}
-              />
-              <Route
-                path="/real-estate-agent/property-details"
-                element={<ReaPropertyDetails />}
-              />
+            {/* Crypto Trader Pages */}
+            <Route
+              path="/crypto-trader/transactions"
+              element={<CtTransactions />}
+            />
+            <Route
+              path="/crypto-trader/gainers-losers"
+              element={<GainersLosers />}
+            />
+            <Route path="/crypto-trader/wallet" element={<CtWallet />} />
 
-              {/* Crypto Trader Pages */}
-              <Route
-                path="/crypto-trader/transactions"
-                element={<CtTransactions />}
-              />
-              <Route
-                path="/crypto-trader/gainers-losers"
-                element={<GainersLosers />}
-              />
-              <Route path="/crypto-trader/wallet" element={<CtWallet />} />
+            {/* Events Pages */}
+            <Route path="/events/events-grid" element={<EventsGrid />} />
+            <Route path="/events/events-list" element={<EventsList />} />
+            <Route path="/events/event-details" element={<EventDetails />} />
+            <Route
+              path="/events/create-an-event"
+              element={<CreateAnEvent />}
+            />
+            <Route path="/events/edit-an-event" element={<EditAnEvent />} />
 
-              {/* Events Pages */}
-              <Route path="/events/events-grid" element={<EventsGrid />} />
-              <Route path="/events/events-list" element={<EventsList />} />
-              <Route path="/events/event-details" element={<EventDetails />} />
-              <Route
-                path="/events/create-an-event"
-                element={<CreateAnEvent />}
-              />
-              <Route path="/events/edit-an-event" element={<EditAnEvent />} />
+            {/* Social Pages */}
+            <Route path="/social/profile" element={<SocialProfile />} />
+            <Route path="/social/settings" element={<SocialSettings />} />
+            <Route path="/social/about" element={<SocialAbout />} />
+            <Route path="/social/activity" element={<SocialActivity />} />
 
-              {/* Social Pages */}
-              <Route path="/social/profile" element={<SocialProfile />} />
-              <Route path="/social/settings" element={<SocialSettings />} />
-              <Route path="/social/about" element={<SocialAbout />} />
-              <Route path="/social/activity" element={<SocialActivity />} />
+            {/* Invoices Pages */}
+            <Route path="/invoices" element={<Invoices />} />
+            <Route
+              path="/invoices/invoice-details"
+              element={<InvoiceDetails />}
+            />
+            <Route
+              path="/invoices/create-invoice"
+              element={<CreateInvoice />}
+            />
+            <Route path="/invoices/edit-invoice" element={<EditInvoice />} />
 
-              {/* Invoices Pages */}
-              <Route path="/invoices" element={<Invoices />} />
-              <Route
-                path="/invoices/invoice-details"
-                element={<InvoiceDetails />}
-              />
-              <Route
-                path="/invoices/create-invoice"
-                element={<CreateInvoice />}
-              />
-              <Route path="/invoices/edit-invoice" element={<EditInvoice />} />
+            {/* Users Pages */}
+            <Route path="/users/team-members" element={<TeamMembers />} />
+            <Route path="/users/users-list" element={<UsersList />} />
+            <Route path="/users/add-user" element={<AddUser />} />
 
-              {/* Users Pages */}
-              <Route path="/users/team-members" element={<TeamMembers />} />
-              <Route path="/users/users-list" element={<UsersList />} />
-              <Route path="/users/add-user" element={<AddUser />} />
+            {/* Profile Pages */}
+            <Route path="/profile/user-profile" element={<UserProfile />} />
+            <Route path="/profile/teams" element={<ProfileTeams />} />
+            <Route path="/profile/projects" element={<ProfileProjects />} />
 
-              {/* Profile Pages */}
-              <Route path="/profile/user-profile" element={<UserProfile />} />
-              <Route path="/profile/teams" element={<ProfileTeams />} />
-              <Route path="/profile/projects" element={<ProfileProjects />} />
+            {/* Starter Page */}
+            <Route path="/starter" element={<Starter />} />
 
-              {/* Starter Page */}
-              <Route path="/starter" element={<Starter />} />
+            {/* Icons Pages */}
+            <Route
+              path="/icons/material-symbols"
+              element={<MaterialSymbols />}
+            />
+            <Route path="/icons/remixicon" element={<Remixicon />} />
 
-              {/* Icons Pages */}
-              <Route
-                path="/icons/material-symbols"
-                element={<MaterialSymbols />}
-              />
-              <Route path="/icons/remixicon" element={<Remixicon />} />
+            {/* UI Elements Pages */}
+            <Route path="/ui-elements/Alerts" element={<Alerts />} />
+            <Route path="/ui-elements/avatars" element={<Avatars />} />
+            <Route path="/ui-elements/accordion" element={<Accordion />} />
+            <Route path="/ui-elements/badges" element={<Badges />} />
+            <Route path="/ui-elements/buttons" element={<Buttons />} />
+            <Route path="/ui-elements/spinner" element={<Spinner />} />
+            <Route path="/ui-elements/breadcrumb" element={<Breadcrumb />} />
+            <Route path="/ui-elements/dropdowns" element={<Dropdowns />} />
+            <Route path="/ui-elements/images" element={<Images />} />
+            <Route path="/ui-elements/modal" element={<Modal />} />
+            <Route path="/ui-elements/pagination" element={<Pagination />} />
+            <Route path="/ui-elements/progress" element={<Progress />} />
+            <Route path="/ui-elements/tooltips" element={<Tooltips />} />
+            <Route path="/ui-elements/tabs" element={<Tabs />} />
+            <Route path="/ui-elements/typography" element={<Typography />} />
+            <Route path="/ui-elements/videos" element={<Videos />} />
 
-              {/* UI Elements Pages */}
-              <Route path="/ui-elements/Alerts" element={<Alerts />} />
-              <Route path="/ui-elements/avatars" element={<Avatars />} />
-              <Route path="/ui-elements/accordion" element={<Accordion />} />
-              <Route path="/ui-elements/badges" element={<Badges />} />
-              <Route path="/ui-elements/buttons" element={<Buttons />} />
-              <Route path="/ui-elements/spinner" element={<Spinner />} />
-              <Route path="/ui-elements/breadcrumb" element={<Breadcrumb />} />
-              <Route path="/ui-elements/dropdowns" element={<Dropdowns />} />
-              <Route path="/ui-elements/images" element={<Images />} />
-              <Route path="/ui-elements/modal" element={<Modal />} />
-              <Route path="/ui-elements/pagination" element={<Pagination />} />
-              <Route path="/ui-elements/progress" element={<Progress />} />
-              <Route path="/ui-elements/tooltips" element={<Tooltips />} />
-              <Route path="/ui-elements/tabs" element={<Tabs />} />
-              <Route path="/ui-elements/typography" element={<Typography />} />
-              <Route path="/ui-elements/videos" element={<Videos />} />
+            {/* Tables Page */}
+            <Route path="/tables" element={<Tables />} />
 
-              {/* Tables Page */}
-              <Route path="/tables" element={<Tables />} />
+            {/* Forms Pages */}
+            <Route path="/forms/input-select" element={<InputSelect />} />
+            <Route
+              path="/forms/checkboxes-radios"
+              element={<CheckboxesRadios />}
+            />
+            <Route
+              path="/forms/rich-text-editor"
+              element={<RichTextEditor />}
+            />
+            <Route path="/forms/file-uploader" element={<FileUploader />} />
 
-              {/* Forms Pages */}
-              <Route path="/forms/input-select" element={<InputSelect />} />
-              <Route
-                path="/forms/checkboxes-radios"
-                element={<CheckboxesRadios />}
-              />
-              <Route
-                path="/forms/rich-text-editor"
-                element={<RichTextEditor />}
-              />
-              <Route path="/forms/file-uploader" element={<FileUploader />} />
+            {/* Charts Pages */}
+            <Route path="/charts/line-charts" element={<LineCharts />} />
+            <Route path="/charts/area-charts" element={<AreaCharts />} />
+            <Route path="/charts/column-charts" element={<ColumnCharts />} />
+            <Route path="/charts/mixed-charts" element={<MixedCharts />} />
+            <Route
+              path="/charts/radialbar-charts"
+              element={<RadialbarCharts />}
+            />
+            <Route path="/charts/radar-charts" element={<RadarCharts />} />
+            <Route path="/charts/pie-charts" element={<PieCharts />} />
+            <Route path="/charts/polar-charts" element={<PolarCharts />} />
+            <Route path="/charts/more-charts" element={<MoreCharts />} />
 
-              {/* Charts Pages */}
-              <Route path="/charts/line-charts" element={<LineCharts />} />
-              <Route path="/charts/area-charts" element={<AreaCharts />} />
-              <Route path="/charts/column-charts" element={<ColumnCharts />} />
-              <Route path="/charts/mixed-charts" element={<MixedCharts />} />
-              <Route
-                path="/charts/radialbar-charts"
-                element={<RadialbarCharts />}
-              />
-              <Route path="/charts/radar-charts" element={<RadarCharts />} />
-              <Route path="/charts/pie-charts" element={<PieCharts />} />
-              <Route path="/charts/polar-charts" element={<PolarCharts />} />
-              <Route path="/charts/more-charts" element={<MoreCharts />} />
+            {/* Authentication Pages */}
+            <Route path="/authentication/sign-in" element={<SignIn />} />
+            <Route path="/authentication/sign-up" element={<SignUp />} />
+            <Route
+              path="/authentication/forgot-password"
+              element={<ForgotPassword />}
+            />
+            <Route
+              path="/authentication/reset-password"
+              element={<ResetPassword />}
+            />
+            <Route
+              path="/authentication/confirm-email"
+              element={<ConfirmEmail />}
+            />
+            <Route
+              path="/authentication/lock-screen"
+              element={<LockScreen />}
+            />
+            <Route path="/authentication/logout" element={<Logout />} />
 
-              {/* Authentication Pages */}
-              <Route path="/authentication/sign-in" element={<SignIn />} />
-              <Route path="/authentication/sign-up" element={<SignUp />} />
-              <Route
-                path="/authentication/forgot-password"
-                element={<ForgotPassword />}
-              />
-              <Route
-                path="/authentication/reset-password"
-                element={<ResetPassword />}
-              />
-              <Route
-                path="/authentication/confirm-email"
-                element={<ConfirmEmail />}
-              />
-              <Route
-                path="/authentication/lock-screen"
-                element={<LockScreen />}
-              />
-              <Route path="/authentication/logout" element={<Logout />} />
+            {/* Extra Pages */}
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/timeline" element={<Timeline />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/testimonials" element={<Testimonials />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/coming-soon" element={<ComingSoon />} />
+            <Route path="/blank-page" element={<BlankPage />} />
+            <Route path="/widgets" element={<Widgets />} />
+            <Route path="/maps" element={<Maps />} />
+            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/members" element={<Members />} />
+            <Route path="/my-profile" element={<MyProfile />} />
 
-              {/* Extra Pages */}
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/timeline" element={<Timeline />} />
-              <Route path="/faq" element={<Faq />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/testimonials" element={<Testimonials />} />
-              <Route path="/search" element={<Search />} />
-              <Route path="/coming-soon" element={<ComingSoon />} />
-              <Route path="/blank-page" element={<BlankPage />} />
-              <Route path="/widgets" element={<Widgets />} />
-              <Route path="/maps" element={<Maps />} />
-              <Route path="/notifications" element={<Notifications />} />
-              <Route path="/members" element={<Members />} />
-              <Route path="/my-profile" element={<MyProfile />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/internal-error" element={<InternalError />} />
 
-              <Route path="*" element={<NotFound />} />
-              <Route path="/internal-error" element={<InternalError />} />
+            {/* Settings Pages */}
+            <Route path="/settings" element={<AccountSettings />} />
+            <Route
+              path="/settings/change-password"
+              element={<ChangePassword />}
+            />
+            <Route path="/settings/connections" element={<Connections />} />
+            <Route
+              path="/settings/privacy-policy"
+              element={<PrivacyPolicy />}
+            />
+            <Route
+              path="/settings/terms-conditions"
+              element={<TermsConditions />}
+            />
+          </Routes>
 
-              {/* Settings Pages */}
-              <Route path="/settings" element={<AccountSettings />} />
-              <Route
-                path="/settings/change-password"
-                element={<ChangePassword />}
-              />
-              <Route path="/settings/connections" element={<Connections />} />
-              <Route
-                path="/settings/privacy-policy"
-                element={<PrivacyPolicy />}
-              />
-              <Route
-                path="/settings/terms-conditions"
-                element={<TermsConditions />}
-              />
-            </Routes>
-
-            {!isAuthPage && <Footer />}
-          </div>
-        </Router>
+          {!isAuthPage && (
+            <>
+              <Footer />
+            </>
+          )}
+        </div>
       </div>
     </>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 };
 

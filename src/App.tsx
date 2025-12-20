@@ -9,10 +9,17 @@ import { roleNavigation } from "./config/roleNavigation";
 import RoleLayout from "./layouts/RoleLayout";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import SellerDashboard from "./pages/seller/SellerDashboard";
+import SellerProducts from "./pages/seller/SellerProducts";
+import SellerOrders from "./pages/seller/SellerOrders";
+import SellerOrderDetail from "./pages/seller/SellerOrderDetail";
+import SellerIdeas from "./pages/seller/SellerIdeas";
+import SellerStlRequests from "./pages/seller/SellerStlRequests";
+import SellerStlRequestDetail from "./pages/seller/SellerStlRequestDetail";
+import SellerMessages from "./pages/seller/SellerMessages";
+import SellerFiles from "./pages/seller/SellerFiles";
 import MakerDashboard from "./pages/maker/MakerDashboard";
 import DesignerDashboard from "./pages/designer/DesignerDashboard";
 import AccessDenied from "./pages/AccessDenied";
-import { getCurrentUser } from "./auth/getCurrentUser";
 
 // Front Pages
 import Home from "./pages/Home";
@@ -349,6 +356,14 @@ const AppContent: React.FC = () => {
             }>
               <Route index element={<Navigate to="/seller/dashboard" replace />} />
               <Route path="dashboard" element={<SellerDashboard />} />
+              <Route path="products" element={<SellerProducts />} />
+              <Route path="orders" element={<SellerOrders />} />
+              <Route path="orders/:id" element={<SellerOrderDetail />} />
+              <Route path="stl-requests" element={<SellerStlRequests />} />
+              <Route path="stl-requests/:id" element={<SellerStlRequestDetail />} />
+              <Route path="ideas" element={<SellerIdeas />} />
+              <Route path="messages" element={<SellerMessages />} />
+              <Route path="files" element={<SellerFiles />} />
             </Route>
 
             {/* Maker Routes */}

@@ -3,42 +3,92 @@ import type { NavSection } from "../components/Layout/SidebarMenu";
 // Seller Role Navigation
 export const sellerNavigation: NavSection[] = [
   {
-    title: "Main",
+    title: "Primary",
     items: [
       {
         id: "dashboard",
         title: "Dashboard",
         icon: "dashboard",
-        path: "/seller",
+        path: "/seller/dashboard",
       },
       {
-        id: "listings",
-        title: "My Listings",
+        id: "products",
+        title: "Products",
         icon: "inventory_2",
-        path: "/seller/listings",
+        path: "/seller/products",
       },
       {
         id: "orders",
         title: "Orders",
         icon: "shopping_cart",
         path: "/seller/orders",
-        badge: {
-          text: "12",
-          color: "text-orange-500",
-          bgColor: "bg-orange-50"
-        }
+      }
+    ]
+  },
+  {
+    title: "Growth",
+    items: [
+      {
+        id: "product-ideas",
+        title: "Product Ideas",
+        icon: "lightbulb",
+        path: "/seller/ideas",
       },
       {
-        id: "payouts",
-        title: "Payouts",
+        id: "custom-stl-requests",
+        title: "Custom STL Requests",
+        icon: "view_in_ar",
+        path: "/seller/stl-requests",
+      }
+    ]
+  },
+  {
+    title: "Operations",
+    items: [
+      {
+        id: "messages",
+        title: "Messages",
+        icon: "chat",
+        path: "/seller/messages",
+      },
+      {
+        id: "files",
+        title: "Files",
+        icon: "folder",
+        path: "/seller/files",
+      }
+    ]
+  },
+  {
+    title: "Finance",
+    items: [
+      {
+        id: "payouts-billing",
+        title: "Payouts & Billing",
         icon: "payments",
         path: "/seller/payouts",
-      },
+      }
+    ]
+  },
+  {
+    title: "Support",
+    items: [
       {
-        id: "support",
-        title: "Support",
+        id: "support-issues",
+        title: "Support & Issues",
         icon: "support_agent",
         path: "/seller/support",
+      }
+    ]
+  },
+  {
+    title: "Settings",
+    items: [
+      {
+        id: "settings",
+        title: "Settings",
+        icon: "settings",
+        path: "/seller/settings",
       }
     ]
   }

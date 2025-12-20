@@ -478,7 +478,7 @@ button {
 
 /** Main Content */
 .main-content {
-  @apply pt-[143px] px-[15px] md:pt-[95px] md:pl-[25px] md:pr-[25px] ltr:xl:pl-[285px] rtl:xl:pr-[285px];
+  @apply pt-[60px];
 }
 .main-content-wrap {
   &.active {

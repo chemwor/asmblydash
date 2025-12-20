@@ -329,11 +329,22 @@ const SellerDashboard: React.FC = () => {
   };
 
   return (
-    <div className="main-content-area">
+    <div className="w-full">
       <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
           Seller Dashboard
         </h3>
+      </div>
+
+      {/* Welcome Section */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm mb-6">
+        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          Welcome to your Seller Dashboard
+        </h4>
+        <p className="text-gray-600 dark:text-gray-400">
+          This is your seller dashboard where you can manage your products, orders, and customers.
+          Use the sidebar navigation to access different sections of your seller portal.
+        </p>
       </div>
 
       {/* High-level KPI Cards */}
@@ -668,16 +679,6 @@ const SellerDashboard: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
-
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm">
-        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-          Welcome to your Seller Dashboard
-        </h4>
-        <p className="text-gray-600 dark:text-gray-400">
-          This is your seller dashboard where you can manage your products, orders, and customers.
-          Use the sidebar navigation to access different sections of your seller portal.
-        </p>
       </div>
     </div>
   );

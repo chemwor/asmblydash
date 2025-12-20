@@ -17,16 +17,35 @@
   --color-white: #ffffff;
   --color-black: #3a4252;
   --color-dark: #000000;
-  --color-primary-50: #ecf0ff;
-  --color-primary-100: #dde4ff;
-  --color-primary-200: #c2cdff;
-  --color-primary-300: #9caaff;
-  --color-primary-400: #757dff;
-  --color-primary-500: #605dff;
-  --color-primary-600: #4936f5;
-  --color-primary-700: #3e2ad8;
-  --color-primary-800: #3225ae;
-  --color-primary-900: #2d2689;
+
+  /* Asmbly Labs Brand Colors */
+  --color-brand-primary: #F89254; /* Faded Orange - Primary CTA */
+  --color-brand-success: #8DA249; /* Asparagus - Success states */
+  --color-brand-neutral: #FCE1B6; /* Navajo White - Light contrast on dark */
+
+  /* Updated primary scale to use Faded Orange as base */
+  --color-primary-50: #fef5f0;
+  --color-primary-100: #fde8dc;
+  --color-primary-200: #fbd0b9;
+  --color-primary-300: #f9b087;
+  --color-primary-400: #f89254;
+  --color-primary-500: #f89254; /* Brand primary */
+  --color-primary-600: #e6763a;
+  --color-primary-700: #c85d25;
+  --color-primary-800: #a14820;
+  --color-primary-900: #7d3818;
+
+  /* Updated success scale to use Asparagus as base */
+  --color-success-50: #f4f7ec;
+  --color-success-100: #e6efd4;
+  --color-success-200: #cfe0ae;
+  --color-success-300: #b0cb7d;
+  --color-success-400: #8da249;
+  --color-success-500: #8da249; /* Brand success */
+  --color-success-600: #7a8f3e;
+  --color-success-700: #5f6f32;
+  --color-success-800: #4d592b;
+  --color-success-900: #414b27;
   --color-secondary-50: #eef6ff;
   --color-secondary-100: #daebff;
   --color-secondary-200: #bddcff;
@@ -47,26 +66,6 @@
   --color-purple-700: #7c24cc;
   --color-purple-800: #6a22a7;
   --color-purple-900: #571d86;
-  --color-success-50: #eeffe5;
-  --color-success-100: #d8ffc8;
-  --color-success-200: #b2ff97;
-  --color-success-300: #82fc5a;
-  --color-success-400: #58f229;
-  --color-success-500: #37d80a;
-  --color-success-600: #25b003;
-  --color-success-700: #1e8308;
-  --color-success-800: #1d670d;
-  --color-success-900: #1a5710;
-  --color-orange-50: #fff5ed;
-  --color-orange-100: #ffe8d4;
-  --color-orange-200: #ffcea9;
-  --color-orange-300: #ffaa72;
-  --color-orange-400: #fe7a36;
-  --color-orange-500: #fd5812;
-  --color-orange-600: #ee3e08;
-  --color-orange-700: #c52b09;
-  --color-orange-800: #9c2410;
-  --color-orange-900: #7e2010;
   --color-danger-50: #fff2f0;
   --color-danger-100: #ffe1dd;
   --color-danger-200: #ffc8c0;

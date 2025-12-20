@@ -1,8 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import SidebarMenu from "./components/Layout/SidebarMenu";
 import Footer from "./components/Layout/Footer";
+import { roleNavigation } from "./config/roleNavigation";
+
+// Role-based components
+import RoleLayout from "./layouts/RoleLayout";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import SellerDashboard from "./pages/seller/SellerDashboard";
+import MakerDashboard from "./pages/maker/MakerDashboard";
+import DesignerDashboard from "./pages/designer/DesignerDashboard";
+import AccessDenied from "./pages/AccessDenied";
+import { getCurrentUser } from "./auth/getCurrentUser";
 
 // Front Pages
 import Home from "./pages/Home";
@@ -291,6 +301,7 @@ const AppContent: React.FC = () => {
     "/authentication/lock-screen",
     "/authentication/logout",
     "/coming-soon",
+    "/access-denied",
     "/",
     "/front-pages/features",
     "/front-pages/team",
@@ -298,19 +309,24 @@ const AppContent: React.FC = () => {
     "/front-pages/contact",
   ].includes(location.pathname);
 
+  // Check if current path is a role-based route
+  const isRoleBasedRoute = ["/seller", "/maker", "/designer"].some(path =>
+    location.pathname.startsWith(path)
+  );
+
   return (
     <>
       <div
         className={`main-content-wrap transition-all ${active ? "active" : ""}`}
       >
-        {!isAuthPage && (
+        {!isAuthPage && !isRoleBasedRoute && (
           <>
-            <SidebarMenu toggleActive={toggleActive} />
+            <SidebarMenu toggleActive={toggleActive} navItems={roleNavigation.default} />
           </>
         )}
 
         <div className="main-content transition-all flex flex-col overflow-hidden min-h-screen">
-          {!isAuthPage && (
+          {!isAuthPage && !isRoleBasedRoute && (
             <>
               <Header toggleActive={toggleActive} />
             </>
@@ -323,6 +339,37 @@ const AppContent: React.FC = () => {
             <Route path="/front-pages/team" element={<Team />} />
             <Route path="/front-pages/faq" element={<FpFaq />} />
             <Route path="/front-pages/contact" element={<Contact />} />
+
+            {/* Role-based Routes */}
+            {/* Seller Routes */}
+            <Route path="/seller" element={
+              <ProtectedRoute>
+                <RoleLayout />
+              </ProtectedRoute>
+            }>
+              <Route index element={<Navigate to="/seller/dashboard" replace />} />
+              <Route path="dashboard" element={<SellerDashboard />} />
+            </Route>
+
+            {/* Maker Routes */}
+            <Route path="/maker" element={
+              <ProtectedRoute>
+                <RoleLayout />
+              </ProtectedRoute>
+            }>
+              <Route index element={<Navigate to="/maker/dashboard" replace />} />
+              <Route path="dashboard" element={<MakerDashboard />} />
+            </Route>
+
+            {/* Designer Routes */}
+            <Route path="/designer" element={
+              <ProtectedRoute>
+                <RoleLayout />
+              </ProtectedRoute>
+            }>
+              <Route index element={<Navigate to="/designer/dashboard" replace />} />
+              <Route path="dashboard" element={<DesignerDashboard />} />
+            </Route>
 
             {/* Dashboard */}
             <Route path="/dashboard/ecommerce" element={<Ecommerce />} />
@@ -705,6 +752,7 @@ const AppContent: React.FC = () => {
             <Route path="/authentication/logout" element={<Logout />} />
 
             {/* Extra Pages */}
+            <Route path="/access-denied" element={<AccessDenied />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/timeline" element={<Timeline />} />
             <Route path="/faq" element={<Faq />} />
@@ -739,7 +787,7 @@ const AppContent: React.FC = () => {
             />
           </Routes>
 
-          {!isAuthPage && (
+          {!isAuthPage && !isRoleBasedRoute && (
             <>
               <Footer />
             </>

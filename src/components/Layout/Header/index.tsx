@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Settings from "./Settings";
 import DarkMode from "./DarkMode";
@@ -8,6 +7,7 @@ import ChooseLanguage from "./ChooseLanguage";
 import Fullscreen from "./Fullscreen";
 import Notifications from "./Notifications";
 import ProfileMenu from "./ProfileMenu";
+import RoleSwitcher from "./RoleSwitcher";
 
 interface HeaderProps {
   toggleActive: () => void;
@@ -56,6 +56,8 @@ const Header: React.FC<HeaderProps> = ({ toggleActive }) => {
           </div>
 
           <div className="flex items-center justify-center md:justify-normal mt-[13px] md:mt-0">
+            <RoleSwitcher />
+
             <DarkMode />
 
             <ChooseLanguage />

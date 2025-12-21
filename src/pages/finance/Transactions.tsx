@@ -1,4 +1,5 @@
 import TransactionsTable from "../../components/Finance/TransactionsTable";
+import InvoicesStatementsTable from "../../components/Finance/InvoicesStatementsTable";
 import { Link } from "react-router-dom";
 
 const Transactions = () => {
@@ -29,6 +30,8 @@ const Transactions = () => {
       </div>
 
       <TransactionsTable />
+
+      <InvoicesStatementsTable />
     </>
   );
 };

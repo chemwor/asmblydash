@@ -1,4 +1,4 @@
-import KanbanBoard from "../../components/ProjectManagement/KanbanBoard";
+import MakerJobs from "./MakerJobs";
 import { Link } from "react-router-dom";
 
 const Jobs = () => {
@@ -28,7 +28,7 @@ const Jobs = () => {
         </ol>
       </div>
 
-      <KanbanBoard />
+      <MakerJobs />
     </>
   );
 };

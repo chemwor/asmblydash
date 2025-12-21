@@ -17,7 +17,14 @@ import SellerStlRequests from "./pages/seller/SellerStlRequests";
 import SellerStlRequestDetail from "./pages/seller/SellerStlRequestDetail";
 import SellerMessages from "./pages/seller/SellerMessages";
 import SellerFiles from "./pages/seller/SellerFiles";
+import SellerPayouts from "./pages/seller/SellerPayouts";
+import SellerSupport from "./pages/seller/SellerSupport";
+import SellerSupportCaseDetail from "./pages/seller/SellerSupportCaseDetail";
+import SellerSettings from "./pages/seller/SellerSettings";
 import MakerDashboard from "./pages/maker/MakerDashboard";
+import MakerJobs from "./pages/maker/MakerJobs";
+import MakerJobDetail from "./pages/maker/MakerJobDetail";
+import MakerCalendar from "./pages/maker/MakerCalendar";
 import DesignerDashboard from "./pages/designer/DesignerDashboard";
 import AccessDenied from "./pages/AccessDenied";
 
@@ -364,6 +371,10 @@ const AppContent: React.FC = () => {
               <Route path="ideas" element={<SellerIdeas />} />
               <Route path="messages" element={<SellerMessages />} />
               <Route path="files" element={<SellerFiles />} />
+              <Route path="payouts" element={<SellerPayouts />} />
+              <Route path="support" element={<SellerSupport />} />
+              <Route path="support/:id" element={<SellerSupportCaseDetail />} />
+              <Route path="settings" element={<SellerSettings />} />
             </Route>
 
             {/* Maker Routes */}
@@ -374,6 +385,9 @@ const AppContent: React.FC = () => {
             }>
               <Route index element={<Navigate to="/maker/dashboard" replace />} />
               <Route path="dashboard" element={<MakerDashboard />} />
+              <Route path="jobs" element={<MakerJobs />} />
+              <Route path="jobs/:id" element={<MakerJobDetail />} />
+              <Route path="calendar" element={<MakerCalendar />} />
             </Route>
 
             {/* Designer Routes */}

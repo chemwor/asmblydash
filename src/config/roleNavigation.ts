@@ -97,42 +97,92 @@ export const sellerNavigation: NavSection[] = [
 // Maker Role Navigation
 export const makerNavigation: NavSection[] = [
   {
-    title: "Main",
+    title: "Primary",
     items: [
       {
         id: "dashboard",
         title: "Dashboard",
         icon: "dashboard",
-        path: "/maker",
+        path: "/maker/dashboard",
       },
       {
         id: "jobs",
-        title: "Job Board",
+        title: "Jobs",
         icon: "work",
         path: "/maker/jobs",
-      },
-      {
-        id: "active",
-        title: "Active Jobs",
-        icon: "task_alt",
-        path: "/maker/active",
-        badge: {
-          text: "5",
-          color: "text-success-600",
-          bgColor: "bg-success-100"
-        }
       },
       {
         id: "calendar",
         title: "Calendar",
         icon: "date_range",
         path: "/maker/calendar",
+      }
+    ]
+  },
+  {
+    title: "Operations",
+    items: [
+      {
+        id: "job-board",
+        title: "Job Board",
+        icon: "view_list",
+        path: "/maker/job-board",
       },
       {
-        id: "earnings",
-        title: "Earnings",
-        icon: "account_balance_wallet",
-        path: "/maker/earnings",
+        id: "messages",
+        title: "Messages",
+        icon: "chat",
+        path: "/maker/messages",
+      },
+      {
+        id: "files",
+        title: "Files",
+        icon: "folder",
+        path: "/maker/files",
+      }
+    ]
+  },
+  {
+    title: "Finance",
+    items: [
+      {
+        id: "payouts",
+        title: "Earnings & Payouts",
+        icon: "payments",
+        path: "/maker/payouts",
+      }
+    ]
+  },
+  {
+    title: "Profile",
+    items: [
+      {
+        id: "profile",
+        title: "Profile & Capabilities",
+        icon: "person",
+        path: "/maker/profile",
+      }
+    ]
+  },
+  {
+    title: "Settings",
+    items: [
+      {
+        id: "settings",
+        title: "Settings",
+        icon: "settings",
+        path: "/maker/settings",
+      }
+    ]
+  },
+  {
+    title: "Support",
+    items: [
+      {
+        id: "support",
+        title: "Support",
+        icon: "support_agent",
+        path: "/maker/support",
       }
     ]
   }

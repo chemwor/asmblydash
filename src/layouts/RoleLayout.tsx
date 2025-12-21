@@ -25,16 +25,22 @@ const RoleLayout: React.FC = () => {
     return <Navigate to="/authentication/sign-in" replace />;
   }
 
-  // Get navigation items based on user role
-  const getNavigationForRole = (userRole: string) => {
-    // For testing purposes, you can force a specific role here
-    // Remove this line and use userRole when user role detection is implemented
-    const role = 'seller'; // Replace with: userRole.toLowerCase()
+  // Get navigation items based on current route
+  const getNavigationForRole = () => {
+    // Detect role from current pathname
+    const detectRoleFromPath = () => {
+      if (pathname.startsWith('/maker')) return 'maker';
+      if (pathname.startsWith('/seller')) return 'seller';
+      if (pathname.startsWith('/designer')) return 'designer';
+      if (pathname.startsWith('/admin')) return 'admin';
+      return 'default';
+    };
 
+    const role = detectRoleFromPath();
     return roleNavigation[role as keyof typeof roleNavigation] || roleNavigation.default;
   };
 
-  const navItems = getNavigationForRole(user?.role || 'seller');
+  const navItems = getNavigationForRole();
 
   return (
     <>

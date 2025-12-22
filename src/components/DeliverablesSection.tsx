@@ -88,18 +88,26 @@ const DeliverablesSection: React.FC<DeliverablesProps> = ({ request, onUpdateReq
   const handleUpload = (deliverableType: string) => {
     if (!uploadFiles || uploadFiles.length === 0) return;
 
+    // Validate deliverable type to ensure it matches the expected union
+    const validDeliverableTypes: ('stl' | 'render' | 'notes' | 'source')[] = ['stl', 'render', 'notes', 'source'];
+    const typedDeliverableType = validDeliverableTypes.includes(deliverableType as any)
+      ? (deliverableType as 'stl' | 'render' | 'notes' | 'source')
+      : 'source'; // fallback to 'source' if invalid type
+
     // Simulate file upload and add to deliverables
     Array.from(uploadFiles).forEach(file => {
       const newItem: DeliverableItem = {
-        id: `item-${Date.now()}-${Math.random()}`,
+        id: `${Date.now()}-${Math.random()}`,
         name: file.name,
         uploadedDate: new Date().toISOString(),
         uploadDate: new Date().toISOString(),
-        type: deliverableType as 'stl' | 'render' | 'notes' | 'source',
+        type: typedDeliverableType as 'stl' | 'render' | 'notes' | 'source',
         size: `${(file.size / 1024 / 1024).toFixed(2)} MB`
       };
 
-      addDeliverableItem(request.requestId, deliverableType as 'stl' | 'renders' | 'notes' | 'source', newItem);
+      // Use 'renders' instead of 'render' to match the expected type
+      const mappedType = typedDeliverableType === 'render' ? 'renders' : typedDeliverableType;
+      addDeliverableItem(request.requestId, mappedType as 'stl' | 'renders' | 'notes' | 'source', newItem);
     });
 
     // Close modal and reset form

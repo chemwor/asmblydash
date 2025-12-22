@@ -144,7 +144,7 @@ const MakerProfile: React.FC = () => {
     updateProfile('machines', [...profileData.machines, newMachine]);
   };
 
-  const updateMachine = (index: number, field: string, value: string) => {
+  const updateMachine = (index: number, field: string, value: string | string[]) => {
     const updatedMachines = profileData.machines.map((machine, i) =>
       i === index ? { ...machine, [field]: value } : machine
     );

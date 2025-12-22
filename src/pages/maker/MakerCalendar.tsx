@@ -27,7 +27,6 @@ interface EventClickInfo {
 }
 
 const MakerCalendar: React.FC = () => {
-  const today = new Date('2025-12-20'); // Current date from context
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [showDayDetails, setShowDayDetails] = useState(false);
   const [showBlackoutModal, setShowBlackoutModal] = useState<boolean>(false);

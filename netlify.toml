@@ -15,6 +15,9 @@
   # Set production environment
   NODE_ENV = "production"
 
+  # Ensure devDependencies are installed (required for TypeScript compiler)
+  NPM_CONFIG_PRODUCTION = "false"
+
 # Redirect rules for Single Page Application (SPA)
 # This ensures that all routes are handled by your React Router
 [[redirects]]

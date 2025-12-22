@@ -1,0 +1,13 @@
+# Redirect all routes to index.html for React Router (SPA)
+/*    /index.html   200
+
+# Handle common static file requests
+/favicon.ico    /favicon.ico    200
+/robots.txt     /robots.txt     200
+/sitemap.xml    /sitemap.xml    200
+
+# Handle API routes if you have any (adjust paths as needed)
+/api/*  /api/:splat  200
+
+# 404 fallback
+/404    /index.html   200

@@ -10,5 +10,18 @@ export default defineConfig({
   },
   build: {
     cssMinify: false,
+    // Ensure consistent builds
+    sourcemap: false,
+    // Optimize chunk sizes for better loading
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          charts: ['apexcharts', 'react-apexcharts'],
+        }
+      }
+    }
   },
+  // Ensure proper base path for deployment
+  base: './',
 });

@@ -761,7 +761,7 @@ const MakerMessages: React.FC = () => {
               {/* Thread Messages */}
               <div className="flex-1 p-4 overflow-y-auto bg-gray-50">
                 <div className="space-y-3">
-                  {selectedConversation.messages.map(message => (
+                  {selectedConversation?.messages.map(message => (
                     <div key={message.id} className={`flex ${message.isFromUser ? 'justify-end' : 'justify-start'}`}>
                       <div className={`max-w-xs px-3 py-2 rounded-lg ${
                         message.isFromUser 

@@ -1,6 +1,7 @@
 // Job Board interfaces and mock data
 export interface JobBoardJob {
   id: string;
+  orderId?: string; // Add optional orderId property
   title: string;
   description: string;
   product: string;

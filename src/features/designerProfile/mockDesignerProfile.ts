@@ -80,6 +80,9 @@ export interface DesignerProfileData {
     behance: string;
     dribbble: string;
   };
+
+  // Rates and licensing information
+  ratesLicensing?: any;
 }
 
 // Default profile data

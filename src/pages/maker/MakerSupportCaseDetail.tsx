@@ -74,13 +74,19 @@ const MakerSupportCaseDetail: React.FC = () => {
   };
 
   const handleAddUpdate = () => {
-    if (newMessage.trim()) {
-      addMessage(id, newMessage.trim());
+    if (newMessage.trim() && id) {
+      const messageData = {
+        sender: 'Maker' as const,
+        message: newMessage.trim(),
+        attachments: []
+      };
+      addMessage(id, messageData);
       setConversation(prev => [
         ...prev,
         {
           id: (prev.length + 1).toString(),
-          sender: 'Maker',
+          caseId: id,
+          sender: 'Maker' as const,
           message: newMessage.trim(),
           timestamp: new Date().toISOString()
         }

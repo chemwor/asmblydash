@@ -471,7 +471,7 @@ const MakerFiles: React.FC = () => {
                     onChange={(e) => setFormData(prev => ({
                       ...prev,
                       proofType: e.target.value as 'QC Photos' | 'Packaging Photo' | 'Label Photo' | 'Other'
-                    }))}
+                    } as typeof prev))}
                     className="h-[50px] rounded-md text-white border border-gray-600 bg-slate-800 px-4 block w-full outline-0 transition-all focus:border-primary-500"
                   >
                     <option value="QC Photos">QC Photos</option>

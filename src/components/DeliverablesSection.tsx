@@ -94,11 +94,12 @@ const DeliverablesSection: React.FC<DeliverablesProps> = ({ request, onUpdateReq
         id: `item-${Date.now()}-${Math.random()}`,
         name: file.name,
         uploadedDate: new Date().toISOString(),
-        type: deliverableType,
+        uploadDate: new Date().toISOString(),
+        type: deliverableType as 'stl' | 'render' | 'notes' | 'source',
         size: `${(file.size / 1024 / 1024).toFixed(2)} MB`
       };
 
-      addDeliverableItem(request.requestId, deliverableType, newItem);
+      addDeliverableItem(request.requestId, deliverableType as 'stl' | 'renders' | 'notes' | 'source', newItem);
     });
 
     // Close modal and reset form

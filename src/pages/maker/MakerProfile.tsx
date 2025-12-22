@@ -238,7 +238,7 @@ const MakerProfile: React.FC = () => {
       const [parent, child] = field.split('.');
       setMachineFormData(prev => ({
         ...prev,
-        [parent]: { ...prev[parent as keyof typeof prev], [child]: value }
+        [parent]: { ...(prev[parent as keyof typeof prev] as object), [child]: value }
       }));
     } else {
       setMachineFormData(prev => ({ ...prev, [field]: value }));

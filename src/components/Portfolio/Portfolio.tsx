@@ -92,7 +92,10 @@ const Portfolio: React.FC = () => {
   const handleSave = async () => {
     try {
       setIsSaving(true);
+      // Get current profile and update only the portfolio and rates sections
+      const currentProfile = await loadDesignerProfile();
       await saveDesignerProfile({
+        ...currentProfile,
         portfolioItems,
         ratesLicensing
       });

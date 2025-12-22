@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { getRequests, addRequest, type RequestFilters } from '../../features/designerRequests/mockDesignerRequests';
+import { getRequests } from '../../features/designerRequests/mockDesignerRequests';
 
 // Control whether designers can create new requests
 const ALLOW_DESIGNER_CREATE = false;

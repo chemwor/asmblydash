@@ -4,6 +4,7 @@ export interface DeliverableItem {
   id: string;
   name: string;
   uploadedDate: string;
+  uploadDate: string; // Add missing property
   size?: string;
   type: string;
 }

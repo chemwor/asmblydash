@@ -1,13 +1,11 @@
 import React, { useState, useMemo } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import {
   getRequestById,
   updateRequestStatus,
   addDeliverable,
   removeDeliverable,
-  addMessage,
   addNote,
-  addActivity,
   canSubmitForReview,
   type DesignerRequest as Request,
   type DeliverableItem
@@ -15,13 +13,12 @@ import {
 
 const DesignerRequestDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastType, setToastType] = useState<'success' | 'warning' | 'error'>('success');
   const [showNoteModal, setShowNoteModal] = useState<boolean>(false);
   const [noteText, setNoteText] = useState<string>('');
-  const [showUploadModal, setShowUploadModal] = useState<boolean>(false);
+  const [showUploadModal, setShowUploadModal] = useState<boolean>(false); // Add back the missing variable
   const [uploadType, setUploadType] = useState<'stl' | 'render' | 'notes' | 'source'>('stl');
   const [refreshTrigger, setRefreshTrigger] = useState<number>(0);
 

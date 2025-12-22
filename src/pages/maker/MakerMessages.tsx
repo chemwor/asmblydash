@@ -173,14 +173,6 @@ const MakerMessages: React.FC = () => {
     return sender?.name || 'Unknown';
   };
 
-  const getSenderRole = (message: Message, conversation: Conversation) => {
-    if (message.isFromUser) {
-      return 'Maker';
-    }
-
-    const sender = conversation.participants.find(p => p.id !== 'maker-1');
-    return sender?.role || 'User';
-  };
 
   const getTypeColor = (type: string) => {
     switch (type) {

@@ -14,8 +14,6 @@ import {
 } from '../../features/designerRoyalties/mockDesignerRoyalties';
 
 const DesignerRoyalties: React.FC = () => {
-  // Define trend type
-  type TrendType = 'up' | 'down';
 
   const allRoyaltyTransactions = transactions;
 

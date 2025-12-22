@@ -3,43 +3,7 @@ import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import {
   transactions,
   statements,
-  updatePayoutMethod
 } from "../../features/makerPayouts/mockMakerPayouts";
-
-// Secondary Transaction Data Interface
-interface SecondaryTransaction {
-  id: string;
-  date: string;
-  type: "Job payout" | "Bonus" | "Adjustment" | "Payout transfer";
-  reference: string;
-  amount: string;
-  status: "Completed" | "Pending" | "Processing" | "Failed";
-}
-
-// Statement Data Interface
-interface Statement {
-  id: string;
-  period: string;
-  jobsCompleted: number;
-  grossEarnings: string;
-  adjustments: string;
-  net: string;
-  status: "Draft" | "Final";
-}
-
-// Payout Method Interface
-interface PayoutMethod {
-  type: "Bank Transfer" | "Stripe" | "PayPal";
-  accountHolderName: string;
-  accountDetails: string;
-  billingAddress: {
-    street: string;
-    city: string;
-    state: string;
-    zipCode: string;
-    country: string;
-  };
-}
 
 const SecondaryTransactionsTable: React.FC = () => {
   // Accordion state - collapsed by default
@@ -49,7 +13,7 @@ const SecondaryTransactionsTable: React.FC = () => {
   const [isPayoutModalOpen, setIsPayoutModalOpen] = useState(false);
 
   // Payout method state
-  const [payoutMethod, setPayoutMethod] = useState<PayoutMethod>({
+  const [payoutMethod, setPayoutMethod] = useState({
     type: "Bank Transfer",
     accountHolderName: "John Doe",
     accountDetails: "****1234",
@@ -63,7 +27,7 @@ const SecondaryTransactionsTable: React.FC = () => {
   });
 
   // Form state
-  const [formData, setFormData] = useState<PayoutMethod>({
+  const [formData, setFormData] = useState({
     type: "Bank Transfer",
     accountHolderName: "",
     accountDetails: "",
@@ -95,7 +59,7 @@ const SecondaryTransactionsTable: React.FC = () => {
   const handleInputChange = (field: string, value: string) => {
     if (field.startsWith("billingAddress.")) {
       const addressField = field.split(".")[1];
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         billingAddress: {
           ...prev.billingAddress,
@@ -103,7 +67,7 @@ const SecondaryTransactionsTable: React.FC = () => {
         },
       }));
     } else {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         [field]: value,
       }));
@@ -188,7 +152,8 @@ const SecondaryTransactionsTable: React.FC = () => {
               Next Payout
             </h4>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
-              Payout method: {payoutMethod.type} - {getMaskedAccountDetails(payoutMethod.accountDetails)}
+              Payout method: {payoutMethod.type} -{" "}
+              {getMaskedAccountDetails(payoutMethod.accountDetails)}
             </p>
           </div>
           <button

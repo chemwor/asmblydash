@@ -13,6 +13,8 @@ interface PortfolioItem {
   description: string;
   image?: string;
   link?: string;
+  thumbnail: string; // Add missing property
+  featured: boolean; // Add missing property
 }
 
 interface RatesLicensing {
@@ -184,7 +186,9 @@ const Portfolio: React.FC = () => {
         category: formData.category,
         description: formData.description,
         image: formData.image || undefined,
-        link: formData.link || undefined
+        link: formData.link || undefined,
+        thumbnail: '', // Add default value
+        featured: false // Add default value
       };
       setPortfolioItems(prev => [...prev, newItem]);
     }

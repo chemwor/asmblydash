@@ -144,7 +144,7 @@ This will ensure the final files are perfect for production!`
       url: URL.createObjectURL(file)
     }));
 
-    const sentMessage = sendMessage(selectedConversation.id, newMessage.trim(), attachments);
+    const sentMessage = sendMessage(selectedConversation!.id, newMessage.trim(), attachments);
     setMessages(prev => [...prev, sentMessage]);
     setNewMessage('');
     setSelectedFiles([]);
@@ -152,7 +152,7 @@ This will ensure the final files are perfect for production!`
     // Update conversation list
     setConversations(prev =>
       prev.map(c =>
-        c.id === selectedConversation.id
+        c.id === selectedConversation!.id
           ? { ...c, lastMessage: sentMessage, updatedAt: sentMessage.timestamp, unreadCount: 0 }
           : c
       ).sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
@@ -175,7 +175,7 @@ This will ensure the final files are perfect for production!`
     setSelectedConversation(prev => prev ? { ...prev, requestStatus: 'In Review' } : null);
     setConversations(prev =>
       prev.map(c =>
-        c.id === selectedConversation.id
+        c.id === selectedConversation!.id
           ? { ...c, requestStatus: 'In Review' }
           : c
       )
@@ -187,14 +187,14 @@ This will ensure the final files are perfect for production!`
     if (!selectedConversation) return;
 
     // Send template message
-    const revisionMessage = sendMessage(selectedConversation.id, template);
+    const revisionMessage = sendMessage(selectedConversation!.id, template);
     setMessages(prev => [...prev, revisionMessage]);
 
     // Update conversation status
     setSelectedConversation(prev => prev ? { ...prev, requestStatus: 'Revision Needed' } : null);
     setConversations(prev =>
       prev.map(c =>
-        c.id === selectedConversation.id
+        c.id === selectedConversation!.id
           ? { ...c, requestStatus: 'Revision Needed', lastMessage: revisionMessage, updatedAt: revisionMessage.timestamp }
           : c
       )

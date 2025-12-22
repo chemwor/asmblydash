@@ -1,16 +1,16 @@
-
 import React from "react";
+import { modernCardClasses } from "../../../utils/modernCardUtils";
 
 const SpinnerWithCard: React.FC = () => {
   return (
     <>
-      <div className="trezo-card bg-white dark:bg-[#0c1427] p-[20px] md:p-[25px] rounded-md">
-        <div className="trezo-card-header mb-[20px] md:mb-[25px] flex items-center justify-between">
-          <div className="trezo-card-title">
-            <h5 className="!mb-0">Spinner With Card</h5>
+      <div className={modernCardClasses.card}>
+        <div className={modernCardClasses.header}>
+          <div>
+            <h5 className={modernCardClasses.title}>Spinner</h5>
           </div>
         </div>
-        <div className="trezo-card-content">
+        <div className={modernCardClasses.content}>
           <div className="relative items-center block max-w-sm p-6 bg-white border border-gray-100 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-800 dark:hover:bg-gray-700">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white opacity-20">
               Noteworthy technology acquisitions 2021

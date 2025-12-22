@@ -1,7 +1,7 @@
-
 import React, { useState } from "react";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { modernCardClasses } from "../../../utils/modernCardUtils";
 
 const Cards: React.FC = () => {
   // Modal
@@ -17,10 +17,10 @@ const Cards: React.FC = () => {
 
   return (
     <>
-      <div className="trezo-card bg-white dark:bg-[#0c1427] p-[20px] md:p-[25px] rounded-md">
-        <div className="trezo-card-header mb-[20px] flex items-center justify-between">
-          <div className="trezo-card-title">
-            <h5 className="!mb-0">Card</h5>
+      <div className={modernCardClasses.cardElevated}>
+        <div className={modernCardClasses.header}>
+          <div>
+            <h5 className={modernCardClasses.title}>Cards</h5>
           </div>
           <div className="trezo-card-subtitle">
             <Menu as="div" className="trezo-card-dropdown relative">

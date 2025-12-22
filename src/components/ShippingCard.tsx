@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { updateJobStatus, getProductionChecklist, updateShipping, addActivity } from '../features/makerJobs/mockJobs';
 import type { Job } from '../features/makerJobs/mockJobs';
+import { modernCardClasses } from '../utils/modernCardUtils';
 
 interface ShippingCardProps {
   job: Job;
@@ -121,11 +122,21 @@ const ShippingCard: React.FC<ShippingCardProps> = ({ job, onUpdate }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-[25px]">
-      <h3 className="text-[18px] font-semibold text-dark dark:text-title-dark mb-[20px] flex items-center">
-        <i className="material-symbols-outlined text-[20px] mr-[8px] text-blue-600 dark:text-blue-400">local_shipping</i>
-        Shipping
-      </h3>
+    <div className={modernCardClasses.card}>
+      <div className={modernCardClasses.header}>
+        <div>
+          <h5 className={modernCardClasses.title}>Shipping & Delivery</h5>
+        </div>
+      </div>
+
+      <div>
+        {/* Helper text with modern styling */}
+        <div className={modernCardClasses.infoBox}>
+          <p className="text-sm text-blue-700 dark:text-blue-300 mb-0">
+            Add tracking information and mark the job as shipped when ready for delivery.
+          </p>
+        </div>
+      </div>
 
       {/* Shipping Form */}
       <div className="space-y-[20px]">

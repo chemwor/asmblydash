@@ -1,6 +1,6 @@
-
 import React, { useEffect, useState } from "react";
 import type { ApexOptions } from "apexcharts";
+import { modernCardClasses } from "../../../../utils/modernCardUtils";
 
 const Cardano: React.FC = () => {
   // Chart
@@ -126,31 +126,10 @@ const Cardano: React.FC = () => {
 
   return (
     <>
-      <div className="bg-secondary-50 dark:bg-[#172036] p-[15px] md:p-[23px] rounded-md">
-        <div className="flex items-center">
-          <img
-            src="/images/watchlist/cardano.svg"
-            className="w-[48px]"
-            alt="cardano"
-            width={48}
-            height={48}
-          />
-          <div className="ltr:ml-[10px] rtl:mr-[10px]">
-            <span className="text-black dark:text-white uppercase font-medium">
-              Cardano
-              <span className="font-normal text-gray-500 dark:text-gray-400">
-                (ADA)
-              </span>
-            </span>
-            <h4 className="!mb-0 !mt-[6px] !text-[18px] md:!text-[20px] !font-semibold">
-              $0.38
-              <span className="relative font-medium text-base text-danger-700 -top-px ltr:ml-[2px] rtl:mr-[2px] ltr:pl-[24px] rtl:pr-[24px]">
-                <i className="material-symbols-outlined absolute ltr:left-0 rtl:right-0 !text-[20px] top-1/2 -translate-y-1/2">
-                  trending_down
-                </i>
-                -2.21%
-              </span>
-            </h4>
+      <div className={modernCardClasses.card}>
+        <div className={modernCardClasses.header}>
+          <div>
+            <h5 className={modernCardClasses.title}>Cardano</h5>
           </div>
         </div>
 

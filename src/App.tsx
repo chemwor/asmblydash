@@ -25,6 +25,14 @@ import MakerDashboard from "./pages/maker/MakerDashboard";
 import MakerJobs from "./pages/maker/MakerJobs";
 import MakerJobDetail from "./pages/maker/MakerJobDetail";
 import MakerCalendar from "./pages/maker/MakerCalendar";
+import MakerJobBoard from "./pages/maker/MakerJobBoard";
+import MakerMessages from "./pages/maker/MakerMessages";
+import MakerFiles from "./pages/maker/MakerFiles";
+import MakerPayouts from "./pages/maker/MakerPayouts";
+import MakerProfile from "./pages/maker/MakerProfile";
+import MakerSettings from "./pages/maker/MakerSettings";
+import MakerSupport from "./pages/maker/MakerSupport";
+import MakerSupportCaseDetail from "./pages/maker/MakerSupportCaseDetail";
 import DesignerDashboard from "./pages/designer/DesignerDashboard";
 import DesignerFiles from "./pages/designer/DesignerFiles";
 import DesignerMessages from "./pages/designer/DesignerMessages";
@@ -398,6 +406,14 @@ const AppContent: React.FC = () => {
               <Route path="jobs" element={<MakerJobs />} />
               <Route path="jobs/:id" element={<MakerJobDetail />} />
               <Route path="calendar" element={<MakerCalendar />} />
+              <Route path="job-board" element={<MakerJobBoard />} />
+              <Route path="messages" element={<MakerMessages />} />
+              <Route path="files" element={<MakerFiles />} />
+              <Route path="payouts" element={<MakerPayouts />} />
+              <Route path="profile" element={<MakerProfile />} />
+              <Route path="settings" element={<MakerSettings />} />
+              <Route path="support" element={<MakerSupport />} />
+              <Route path="support/:id" element={<MakerSupportCaseDetail />} />
             </Route>
 
             {/* Designer Routes */}
@@ -816,7 +832,6 @@ const AppContent: React.FC = () => {
             <Route path="/members" element={<Members />} />
             <Route path="/my-profile" element={<MyProfile />} />
 
-            <Route path="*" element={<NotFound />} />
             <Route path="/internal-error" element={<InternalError />} />
 
             {/* Settings Pages */}
@@ -834,6 +849,9 @@ const AppContent: React.FC = () => {
               path="/settings/terms-conditions"
               element={<TermsConditions />}
             />
+
+            {/* Catch-all route - MUST be last */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
 
           {!isAuthPage && !isRoleBasedRoute && (

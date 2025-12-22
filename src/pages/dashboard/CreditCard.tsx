@@ -1,3 +1,4 @@
+import React from "react";
 import CardsWithAmount from "../../components/Dashboard/CreditCard/CardsWithAmount";
 import CreditUtilizationRatio from "../../components/Dashboard/CreditCard/CreditUtilizationRatio";
 import DailyLimit from "../../components/Dashboard/CreditCard/DailyLimit";
@@ -10,10 +11,19 @@ import SpendingBreakdown from "../../components/Dashboard/CreditCard/SpendingBre
 import Statistics from "../../components/Dashboard/CreditCard/Statistics";
 import TotalBalance from "../../components/Dashboard/CreditCard/TotalBalance";
 import TotalExpense from "../../components/Dashboard/CreditCard/TotalExpense";
+import { modernCardClasses } from "../../utils/modernCardUtils";
 
-const CreditCard = () => {
+const CreditCard: React.FC = () => {
   return (
     <>
+      <div className={modernCardClasses.cardGradient}>
+        <div className={modernCardClasses.header}>
+          <div>
+            <h5 className={modernCardClasses.title}>Credit Card</h5>
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-[25px] mb-[25px]">
         <div className="lg:col-span-2">
           <MyCards />

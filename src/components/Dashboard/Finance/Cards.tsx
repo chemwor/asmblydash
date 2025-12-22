@@ -1,6 +1,6 @@
-
 import React, { useState } from "react";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
+import { modernCardClasses } from "../../../utils/modernCardUtils";
 
 const Cards: React.FC = () => {
   // Modal
@@ -8,23 +8,19 @@ const Cards: React.FC = () => {
 
   return (
     <>
-      <div className="trezo-card bg-white dark:bg-[#0c1427] p-[20px] md:p-[25px] rounded-md">
-        <div className="trezo-card-header mb-[20px] flex items-center justify-between">
-          <div className="trezo-card-title">
-            <h5 className="!mb-0">Card</h5>
+      <div className={modernCardClasses.cardElevated}>
+        <div className={modernCardClasses.header}>
+          <div>
+            <h5 className={modernCardClasses.title}>Cards</h5>
           </div>
-          <div className="trezo-card-subtitle">
+          <div>
             <button
               type="button"
-              className="inline-block transition-all rounded-md font-medium px-[13px] py-[6px] text-primary-500 border border-primary-500 hover:bg-primary-500 hover:text-white"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 hover:text-blue-700 transition-colors dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800/40 dark:hover:bg-blue-900/30"
               onClick={() => setOpen(true)}
             >
-              <span className="inline-block relative ltr:pl-[22px] rtl:pr-[22px]">
-                <i className="material-symbols-outlined !text-[22px] absolute ltr:-left-[4px] rtl:-right-[4px] top-1/2 -translate-y-1/2">
-                  add
-                </i>
-                Add Card
-              </span>
+              <i className="material-symbols-outlined text-lg">add</i>
+              Add Card
             </button>
           </div>
         </div>

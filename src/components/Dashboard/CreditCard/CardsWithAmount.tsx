@@ -1,6 +1,6 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import type { ApexOptions } from "apexcharts";
+import { modernCardClasses } from "../../../utils/modernCardUtils";
 
 const CardsWithAmount: React.FC = () => {
   // Chart
@@ -92,10 +92,10 @@ const CardsWithAmount: React.FC = () => {
 
   return (
     <>
-      <div className="trezo-card bg-white dark:bg-[#0c1427] p-[20px] md:p-[25px] rounded-md">
-        <div className="trezo-card-header mb-[20px] md:mb-[25px] flex items-center justify-between">
-          <div className="trezo-card-title">
-            <h5 className="!mb-0">Cards With Amount</h5>
+      <div className={modernCardClasses.cardGradient}>
+        <div className={modernCardClasses.header}>
+          <div>
+            <h5 className={modernCardClasses.title}>Cards</h5>
           </div>
         </div>
 

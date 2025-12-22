@@ -332,15 +332,34 @@ export const defaultNavigation: NavSection[] = [
         title: "Email",
         icon: "mail",
         children: [
-          { id: "inbox", title: "Inbox", path: "/apps/email" },
-          { id: "compose", title: "Compose", path: "/apps/email/compose" }
+          { id: "inbox", title: "Inbox", path: "/apps/email/inbox" },
+          { id: "promotions", title: "Promotions", path: "/apps/email/promotions" },
+          { id: "compose", title: "Compose", path: "/apps/email/compose" },
+          { id: "read", title: "Read", path: "/apps/email/read" }
+        ]
+      },
+      { id: "kanban-board", title: "Kanban Board", icon: "view_kanban", path: "/apps/kanban-board" },
+      {
+        id: "file-manager",
+        title: "File Manager",
+        icon: "folder_open",
+        children: [
+          { id: "my-drive", title: "My Drive", path: "/apps/file-manager/my-drive" },
+          { id: "assets", title: "Assets", path: "/apps/file-manager/assets" },
+          { id: "projects", title: "Projects", path: "/apps/file-manager/projects" },
+          { id: "personal", title: "Personal", path: "/apps/file-manager/personal" },
+          { id: "applications", title: "Applications", path: "/apps/file-manager/applications" },
+          { id: "documents", title: "Documents", path: "/apps/file-manager/documents" },
+          { id: "media", title: "Media", path: "/apps/file-manager/media" },
+          { id: "recents", title: "Recents", path: "/apps/file-manager/recents" },
+          { id: "important", title: "Important", path: "/apps/file-manager/important" }
         ]
       }
     ]
   }
 ];
 
-// Role navigation mapping
+// Export the roleNavigation object
 export const roleNavigation = {
   seller: sellerNavigation,
   maker: makerNavigation,

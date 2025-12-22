@@ -177,8 +177,16 @@ const MakerJobBoard: React.FC = () => {
       const jobBoardSuccess = markJobAsAccepted(job.id);
 
       if (jobBoardSuccess) {
-        // Add job to maker's queue
-        const newJob = addJobToQueue(job);
+        try {
+          const newJob = addJobToQueue(job);
+          console.log('Job added to queue:', newJob);
+
+          showToast('Job accepted successfully! Added to your queue.', 'success');
+          onJobUpdate?.();
+        } catch (error) {
+          console.error('Failed to accept job:', error);
+          throw new Error('Failed to mark job as accepted');
+        }
 
         // Close modals
         setConfirmModal({ isOpen: false, job: null });

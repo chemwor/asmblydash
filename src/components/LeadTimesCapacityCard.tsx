@@ -15,16 +15,16 @@ const LeadTimesCapacityCard: React.FC = () => {
   ];
 
   return (
-    <div className="trezo-card bg-white dark:bg-[#0c1427] p-[20px] md:p-[25px] rounded-md">
-      <div className="trezo-card-header mb-[20px] md:mb-[25px] flex items-center justify-between">
-        <div className="trezo-card-title">
-          <h5 className="!mb-0">Lead Times & Capacity</h5>
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200/60 dark:border-gray-800/60 backdrop-blur-sm hover:shadow-lg hover:shadow-gray-200/40 dark:hover:shadow-gray-900/40 transition-all duration-300 ease-out ring-1 ring-gray-950/[0.02] dark:ring-white/[0.02] p-6">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h5 className="text-lg font-semibold text-gray-900 dark:text-white mb-0">Lead Times & Capacity</h5>
         </div>
       </div>
 
-      <div className="trezo-card-content">
-        {/* Helper text */}
-        <div className="mb-[25px] p-[15px] bg-blue-50 dark:bg-blue-900/20 rounded-md border-l-4 border-blue-400">
+      <div>
+        {/* Helper text with modern styling */}
+        <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-lg border border-blue-200/40 dark:border-blue-800/40">
           <p className="text-sm text-blue-700 dark:text-blue-300 mb-0">
             These values help match you with jobs that fit your schedule and capacity. Setting accurate lead times improves customer satisfaction.
           </p>

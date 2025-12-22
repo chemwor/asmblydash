@@ -90,7 +90,7 @@ const DeliverablesSection: React.FC<DeliverablesProps> = ({ request, onUpdateReq
 
     // Validate deliverable type to ensure it matches the expected union
     const validDeliverableTypes: ('stl' | 'render' | 'notes' | 'source')[] = ['stl', 'render', 'notes', 'source'];
-    const typedDeliverableType = validDeliverableTypes.includes(deliverableType as any)
+    const typedDeliverableType = validDeliverableTypes.includes(deliverableType as 'stl' | 'render' | 'notes' | 'source')
       ? (deliverableType as 'stl' | 'render' | 'notes' | 'source')
       : 'source'; // fallback to 'source' if invalid type
 

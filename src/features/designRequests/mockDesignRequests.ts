@@ -6,7 +6,7 @@ export interface DeliverableItem {
   uploadedDate: string;
   uploadDate: string; // Add missing property
   size?: string;
-  type: string;
+  type: 'source' | 'stl' | 'render' | 'notes';
 }
 
 export interface Deliverable {

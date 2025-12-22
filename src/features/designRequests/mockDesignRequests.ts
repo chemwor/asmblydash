@@ -5,7 +5,7 @@ export interface DeliverableItem {
   name: string;
   uploadedDate: string;
   uploadDate: string; // Add missing property
-  size?: string;
+  size: string; // Make required to match designerRequests type
   type: 'source' | 'stl' | 'render' | 'notes';
 }
 

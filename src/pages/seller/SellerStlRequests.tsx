@@ -1,5 +1,25 @@
 import React, { useState } from 'react';
 
+// Define interface for STL request object
+interface STLRequest {
+  id: string;
+  title: string;
+  category: string;
+  requestDate: string;
+  updatedDate: string;
+  dueDate: string;
+  status: string;
+  statusLabel: string;
+  statusClass: string;
+  priority: string;
+  priorityLabel: string;
+  priorityClass: string;
+  budget: string;
+  targetPrice: string;
+  description: string;
+  requesterEmail: string;
+}
+
 const SellerStlRequests: React.FC = () => {
   // Mock data for STL requests
   const mockData = {
@@ -430,7 +450,7 @@ const SellerStlRequests: React.FC = () => {
     }
   };
 
-  const sortRequests = (requests: any[]) => {
+  const sortRequests = (requests: STLRequest[]) => {
     return [...requests].sort((a, b) => {
       switch (sortBy) {
         case 'updated_desc':

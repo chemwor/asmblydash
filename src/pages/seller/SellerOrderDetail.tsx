@@ -1,7 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 import { useMemo } from "react";
 
-const SellerOrderDetail = () => {
+interface OrderDetail {
+  eta: string;
+  status: string;
+}
+
+const SellerOrderDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
   // Mock orders data (same as in SellerOrders)
@@ -292,13 +297,13 @@ const SellerOrderDetail = () => {
   const order = orders.find(o => o.id === id);
 
   // Helper functions for risk status
-  const isOrderDelayed = (order: any) => {
+  const isOrderDelayed = (order: OrderDetail) => {
     const today = new Date();
     const etaDate = new Date(order.eta);
     return etaDate < today && order.status !== "Delivered";
   };
 
-  const isOrderAtRisk = (order: any) => {
+  const isOrderAtRisk = (order: OrderDetail) => {
     const today = new Date();
     const etaDate = new Date(order.eta);
     const daysDiff = Math.ceil((etaDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));

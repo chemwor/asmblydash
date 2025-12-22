@@ -9,6 +9,7 @@ const AccountSettingsForm: React.FC = () => {
   const [timezone, setTimezone] = useState<string>("UTC-05:00");
   const [defaultCurrency, setDefaultCurrency] = useState<string>("USD");
   const [showConfirmModal, setShowConfirmModal] = useState<boolean>(false);
+  const [confirmationText, setConfirmationText] = useState<string>("");
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -27,14 +28,38 @@ const AccountSettingsForm: React.FC = () => {
   };
 
   const handleConfirmDeactivation = () => {
-    // UI only - no actual deactivation
-    alert("Account deactivation process initiated (UI only)");
+    // Show success toast
+    showToast("Designer account has been deactivated", "success");
     setShowConfirmModal(false);
+    setConfirmationText("");
   };
 
   const handleCancelDeactivation = () => {
     setShowConfirmModal(false);
+    setConfirmationText("");
   };
+
+  // Simple toast implementation
+  const showToast = (message: string, type: 'success' | 'error') => {
+    console.log(`Toast: ${type.toUpperCase()} - ${message}`);
+    // Create a simple toast element
+    const toast = document.createElement('div');
+    toast.className = `fixed top-4 right-4 z-[60] px-4 py-2 rounded-md text-white font-medium ${
+      type === 'success' ? 'bg-green-600' : 'bg-red-600'
+    } shadow-lg transition-all duration-300`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    // Remove toast after 3 seconds
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => {
+        document.body.removeChild(toast);
+      }, 300);
+    }, 3000);
+  };
+
+  const isConfirmationValid = confirmationText === "DEACTIVATE";
 
   return (
     <>
@@ -136,10 +161,10 @@ const AccountSettingsForm: React.FC = () => {
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                   <h6 className="text-md font-medium text-red-700 dark:text-red-400 mb-2">
-                    Deactivate Seller Account
+                    Deactivate Designer Account
                   </h6>
                   <p className="text-red-600 dark:text-red-300 text-sm">
-                    Once you deactivate your account, all your products will be hidden from buyers and you won't be able to receive new orders.
+                    Once you deactivate your account, you will lose access to all designer features and cannot receive new projects.
                   </p>
                 </div>
                 <button
@@ -147,7 +172,7 @@ const AccountSettingsForm: React.FC = () => {
                   className="font-medium inline-block transition-all rounded-md py-[10px] px-[20px] bg-red-600 text-white hover:bg-red-700 whitespace-nowrap"
                   onClick={handleDeactivateAccount}
                 >
-                  Deactivate Account
+                  Deactivate Designer Account
                 </button>
               </div>
             </div>
@@ -162,33 +187,54 @@ const AccountSettingsForm: React.FC = () => {
           <div className="absolute inset-0 bg-slate-900" />
 
           {/* Modal content */}
-          <div className="relative bg-white dark:bg-[#0c1427] rounded-lg shadow-xl max-w-md w-full p-6">
+          <div className="relative bg-slate-900 rounded-lg shadow-xl max-w-md w-full p-6 border border-slate-700">
             <div className="text-center">
-              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 dark:bg-red-900/20 mb-4">
-                <i className="material-symbols-outlined text-red-600 dark:text-red-400">
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-900/20 mb-4">
+                <i className="material-symbols-outlined text-red-400 text-[24px]">
                   warning
                 </i>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                Deactivate Seller Account
+              <h3 className="text-lg font-medium text-white mb-2">
+                Deactivate Designer Account
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-                Are you sure you want to deactivate your seller account? This action will hide all your products and prevent new orders. You can reactivate your account later.
+              <p className="text-sm text-slate-300 mb-6">
+                This action will deactivate your designer account and remove access to all design tools and projects. You will not be able to receive new project assignments.
               </p>
+
+              {/* Confirmation text input */}
+              <div className="mb-6 text-left">
+                <label className="block text-sm font-medium text-slate-300 mb-2">
+                  Type <span className="font-mono font-bold text-red-400">DEACTIVATE</span> to confirm:
+                </label>
+                <input
+                  type="text"
+                  value={confirmationText}
+                  onChange={(e) => setConfirmationText(e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded-md text-white placeholder-slate-400 focus:outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400"
+                  placeholder="Type DEACTIVATE here"
+                  autoFocus
+                />
+              </div>
+
               <div className="flex gap-3 justify-center">
                 <button
                   type="button"
-                  className="font-medium inline-block transition-all rounded-md py-[8px] px-[16px] bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+                  className="font-medium inline-block transition-all rounded-md py-[8px] px-[16px] bg-slate-700 text-slate-300 hover:bg-slate-600"
                   onClick={handleCancelDeactivation}
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
-                  className="font-medium inline-block transition-all rounded-md py-[8px] px-[16px] bg-red-600 text-white hover:bg-red-700"
+                  className={`font-medium inline-block transition-all rounded-md py-[8px] px-[16px] ${
+                    isConfirmationValid
+                      ? 'bg-red-600 text-white hover:bg-red-700'
+                      : 'bg-slate-700 text-slate-500 cursor-not-allowed'
+                  }`}
                   onClick={handleConfirmDeactivation}
+                  disabled={!isConfirmationValid}
                 >
-                  Deactivate
+                  Deactivate Account
                 </button>
               </div>
             </div>

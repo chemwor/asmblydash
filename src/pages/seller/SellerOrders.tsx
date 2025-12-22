@@ -1,7 +1,23 @@
 import { Link } from "react-router-dom";
 import { useState, useMemo } from "react";
 
-const SellerOrders = () => {
+// Define interface for order object used in filter functions
+interface OrderItem {
+  id: string;
+  createdDate: string;
+  customer: string;
+  customerMasked: string;
+  product: string;
+  qty: number;
+  status: string;
+  statusClass: string;
+  maker: string;
+  eta: string;
+  tracking: string;
+  total: string;
+}
+
+const SellerOrders: React.FC = () => {
   // State for filters and search
   const [searchTerm, setSearchTerm] = useState("");
   const [activeTab, setActiveTab] = useState("All");
@@ -11,7 +27,7 @@ const SellerOrders = () => {
   const [sortBy, setSortBy] = useState("Newest");
 
   // Extended mock data for orders table with all required columns
-  const orders = [
+  const orders: OrderItem[] = [
     {
       id: "ORD-2024-001",
       createdDate: "Dec 18, 2025",
@@ -301,7 +317,7 @@ const SellerOrders = () => {
   }, [orders]);
 
   // Filter orders based on date range
-  const filterByDateRange = (order: any) => {
+  const filterByDateRange = (order: OrderItem) => {
     const orderDate = new Date(order.createdDate);
     const now = new Date();
     const daysDiff = Math.floor((now.getTime() - orderDate.getTime()) / (1000 * 60 * 60 * 24));
@@ -387,13 +403,13 @@ const SellerOrders = () => {
   };
 
   // Helper functions to determine order risk status
-  const isOrderDelayed = (order: any) => {
+  const isOrderDelayed = (order: OrderItem) => {
     const today = new Date();
     const etaDate = new Date(order.eta);
     return etaDate < today && order.status !== "Delivered";
   };
 
-  const isOrderAtRisk = (order: any) => {
+  const isOrderAtRisk = (order: OrderItem) => {
     const today = new Date();
     const etaDate = new Date(order.eta);
     const daysDiff = Math.ceil((etaDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));

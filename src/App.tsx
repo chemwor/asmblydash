@@ -26,6 +26,16 @@ import MakerJobs from "./pages/maker/MakerJobs";
 import MakerJobDetail from "./pages/maker/MakerJobDetail";
 import MakerCalendar from "./pages/maker/MakerCalendar";
 import DesignerDashboard from "./pages/designer/DesignerDashboard";
+import DesignerFiles from "./pages/designer/DesignerFiles";
+import DesignerMessages from "./pages/designer/DesignerMessages";
+import DesignerProfile from "./pages/designer/DesignerProfile";
+import DesignerRequestDetail from "./pages/designer/DesignerRequestDetail";
+import DesignerRequests from "./pages/designer/DesignerRequests";
+import DesignerRoyalties from "./pages/designer/DesignerRoyalties";
+import DesignerSettings from "./pages/designer/DesignerSettings";
+import Designs from "./pages/designer/Designs";
+import Licensing from "./pages/designer/Licensing";
+import Royalties from "./pages/designer/Royalties";
 import AccessDenied from "./pages/AccessDenied";
 
 // Front Pages
@@ -398,6 +408,16 @@ const AppContent: React.FC = () => {
             }>
               <Route index element={<Navigate to="/designer/dashboard" replace />} />
               <Route path="dashboard" element={<DesignerDashboard />} />
+              <Route path="files" element={<DesignerFiles />} />
+              <Route path="messages" element={<DesignerMessages />} />
+              <Route path="profile" element={<DesignerProfile />} />
+              <Route path="requests" element={<DesignerRequests />} />
+              <Route path="requests/:id" element={<DesignerRequestDetail />} />
+              <Route path="royalties" element={<DesignerRoyalties />} />
+              <Route path="settings" element={<DesignerSettings />} />
+              <Route path="designs" element={<Designs />} />
+              <Route path="licensing" element={<Licensing />} />
+              <Route path="royalties" element={<Royalties />} />
             </Route>
 
             {/* Dashboard */}

@@ -15,6 +15,17 @@ import {
   type CalendarFilters
 } from '../../features/makerCalendar/mockMakerCalendar';
 
+// Define interfaces for calendar event handlers
+interface DateClickInfo {
+  dateStr: string;
+}
+
+interface EventClickInfo {
+  event: {
+    start: Date | null;
+  };
+}
+
 const MakerCalendar: React.FC = () => {
   const today = new Date('2025-12-20'); // Current date from context
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -41,17 +52,19 @@ const MakerCalendar: React.FC = () => {
   const { dueToday, dueThisWeek, overdue, blocked } = computeCounts(jobs);
 
   // Handle date click
-  const handleDateClick = (info: any) => {
+  const handleDateClick = (info: DateClickInfo) => {
     const clickedDate = info.dateStr;
     setSelectedDate(clickedDate);
     setShowDayDetails(true);
   };
 
   // Handle event click to show day details for that date
-  const handleEventClick = (info: any) => {
-    const eventDate = info.event.startStr;
-    setSelectedDate(eventDate);
-    setShowDayDetails(true);
+  const handleEventClick = (info: EventClickInfo) => {
+    const eventDate = info.event.start?.toString();
+    if (eventDate) {
+      setSelectedDate(eventDate);
+      setShowDayDetails(true);
+    }
   };
 
   // Close day details panel/modal

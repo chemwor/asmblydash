@@ -191,31 +191,69 @@ export const makerNavigation: NavSection[] = [
 // Designer Role Navigation
 export const designerNavigation: NavSection[] = [
   {
-    title: "Main",
+    title: "Primary",
     items: [
       {
         id: "dashboard",
         title: "Dashboard",
         icon: "dashboard",
-        path: "/designer",
+        path: "/designer/dashboard",
       },
       {
-        id: "designs",
-        title: "My Designs",
-        icon: "palette",
-        path: "/designer/designs",
+        id: "requests",
+        title: "Requests",
+        icon: "assignment",
+        path: "/designer/requests",
+      }
+    ]
+  },
+  {
+    title: "Operations",
+    items: [
+      {
+        id: "files",
+        title: "Files / Deliverables",
+        icon: "folder",
+        path: "/designer/files",
       },
       {
-        id: "licensing",
-        title: "Licensing",
-        icon: "gavel",
-        path: "/designer/licensing",
-      },
+        id: "messages",
+        title: "Messages",
+        icon: "chat",
+        path: "/designer/messages",
+      }
+    ]
+  },
+  {
+    title: "Performance",
+    items: [
       {
         id: "royalties",
         title: "Royalties",
         icon: "monetization_on",
         path: "/designer/royalties",
+      }
+    ]
+  },
+  {
+    title: "Profile",
+    items: [
+      {
+        id: "profile",
+        title: "Profile",
+        icon: "person",
+        path: "/designer/profile",
+      }
+    ]
+  },
+  {
+    title: "Settings",
+    items: [
+      {
+        id: "settings",
+        title: "Settings",
+        icon: "settings",
+        path: "/designer/settings",
       }
     ]
   }

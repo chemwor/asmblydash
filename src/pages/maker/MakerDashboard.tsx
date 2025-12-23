@@ -189,7 +189,7 @@ const MakerDashboard: React.FC = () => {
       {/* Header */}
       <div className="mb-[25px] md:flex items-center justify-between">
         <div>
-          <h5 className="!mb-0 text-gray-900 dark:text-white">Dashboard</h5>
+          <h3 className="!mb-0 text-gray-900 dark:text-white">Maker Dashboard</h3>
           <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">Your production workload and earnings at a glance</p>
         </div>
 

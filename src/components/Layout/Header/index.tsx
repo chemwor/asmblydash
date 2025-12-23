@@ -56,8 +56,6 @@ const Header: React.FC<HeaderProps> = ({ toggleActive }) => {
           </div>
 
           <div className="flex items-center justify-center md:justify-normal mt-[13px] md:mt-0">
-            <RoleSwitcher />
-
             <DarkMode />
 
             <ChooseLanguage />
@@ -66,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({ toggleActive }) => {
 
             <Notifications />
 
-            <ProfileMenu />
+            <RoleSwitcher />
 
             <Settings />
           </div>

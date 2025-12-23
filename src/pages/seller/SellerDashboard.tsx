@@ -336,16 +336,18 @@ const SellerDashboard: React.FC = () => {
         </h3>
       </div>
 
+
+
       {/* Welcome Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm mb-6">
-        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-          Welcome to your Seller Dashboard
-        </h4>
-        <p className="text-gray-600 dark:text-gray-400">
-          This is your seller dashboard where you can manage your products, orders, and customers.
-          Use the sidebar navigation to access different sections of your seller portal.
-        </p>
-      </div>
+      {/*<div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm mb-6">*/}
+      {/*  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">*/}
+      {/*    Welcome to your Seller Dashboard*/}
+      {/*  </h4>*/}
+      {/*  <p className="text-gray-600 dark:text-gray-400">*/}
+      {/*    This is your seller dashboard where you can manage your products, orders, and customers.*/}
+      {/*    Use the sidebar navigation to access different sections of your seller portal.*/}
+      {/*  </p>*/}
+      {/*</div>*/}
 
       {/* High-level KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -446,6 +448,32 @@ const SellerDashboard: React.FC = () => {
                 <span className="text-xs text-gray-500 dark:text-gray-400 ml-2">{dashboardData.kpis.avgFulfillmentTime.changeLabel}</span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Alerts & Insights Panel */}
+      <div className="trezo-card bg-white dark:bg-[#0c1427] mb-[25px] p-[20px] md:p-[25px] rounded-md">
+        <div className="trezo-card-header mb-[20px] md:mb-[25px]">
+          <div className="trezo-card-title">
+            <h5 className="!mb-0">Alerts & Insights</h5>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Actionable items requiring your attention</p>
+          </div>
+        </div>
+
+        <div className="trezo-card-content">
+          <div className="space-y-4">
+            {dashboardData.alerts.map((alert) => (
+                <div key={alert.id} className={`alert py-[1rem] px-[1rem] rounded-md flex items-center justify-between ${alert.classes}`}>
+                  <div className="flex items-center gap-[8px]">
+                    <i className={`${alert.icon} text-[20px]`}></i>
+                    <span>{alert.message}</span>
+                  </div>
+                  <button className={`leading-none text-[20px] close-btn ${alert.hoverClass} transition-colors`}>
+                    <i className="ri-close-line"></i>
+                  </button>
+                </div>
+            ))}
           </div>
         </div>
       </div>
@@ -655,31 +683,6 @@ const SellerDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Alerts & Insights Panel */}
-      <div className="trezo-card bg-white dark:bg-[#0c1427] mb-[25px] p-[20px] md:p-[25px] rounded-md">
-        <div className="trezo-card-header mb-[20px] md:mb-[25px]">
-          <div className="trezo-card-title">
-            <h5 className="!mb-0">Alerts & Insights</h5>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Actionable items requiring your attention</p>
-          </div>
-        </div>
-
-        <div className="trezo-card-content">
-          <div className="space-y-4">
-            {dashboardData.alerts.map((alert) => (
-              <div key={alert.id} className={`alert py-[1rem] px-[1rem] rounded-md flex items-center justify-between ${alert.classes}`}>
-                <div className="flex items-center gap-[8px]">
-                  <i className={`${alert.icon} text-[20px]`}></i>
-                  <span>{alert.message}</span>
-                </div>
-                <button className={`leading-none text-[20px] close-btn ${alert.hoverClass} transition-colors`}>
-                  <i className="ri-close-line"></i>
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

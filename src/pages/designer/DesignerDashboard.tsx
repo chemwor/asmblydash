@@ -63,7 +63,7 @@ const DesignerDashboard: React.FC = () => {
       <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
         <div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-            Dashboard
+            Designer Dashboard
           </h3>
           <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
             Manage design requests and approvals
@@ -72,33 +72,33 @@ const DesignerDashboard: React.FC = () => {
       </div>
 
       {/* Welcome Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm mb-6">
-        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-          Welcome to your Designer Dashboard
-        </h4>
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
-          Track and manage your design requests, approvals, and performance metrics.
-          Use the navigation to access detailed views of your requests, files, and earnings.
-        </p>
+      {/*<div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm mb-6">*/}
+      {/*  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">*/}
+      {/*    Welcome to your Designer Dashboard*/}
+      {/*  </h4>*/}
+      {/*  <p className="text-gray-600 dark:text-gray-400 mb-4">*/}
+      {/*    Track and manage your design requests, approvals, and performance metrics.*/}
+      {/*    Use the navigation to access detailed views of your requests, files, and earnings.*/}
+      {/*  </p>*/}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-            <i className="ri-file-list-3-line text-2xl text-blue-600 dark:text-blue-400 mb-2"></i>
-            <p className="text-sm font-medium text-gray-900 dark:text-white">Manage Requests</p>
-            <p className="text-xs text-gray-600 dark:text-gray-400">View and respond to design requests</p>
-          </div>
-          <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-            <i className="ri-folder-line text-2xl text-purple-600 dark:text-purple-400 mb-2"></i>
-            <p className="text-sm font-medium text-gray-900 dark:text-white">File Deliverables</p>
-            <p className="text-xs text-gray-600 dark:text-gray-400">Upload and organize your work</p>
-          </div>
-          <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-            <i className="ri-line-chart-line text-2xl text-green-600 dark:text-green-400 mb-2"></i>
-            <p className="text-sm font-medium text-gray-900 dark:text-white">Track Performance</p>
-            <p className="text-xs text-gray-600 dark:text-gray-400">Monitor royalties and metrics</p>
-          </div>
-        </div>
-      </div>
+      {/*  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">*/}
+      {/*    <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">*/}
+      {/*      <i className="ri-file-list-3-line text-2xl text-blue-600 dark:text-blue-400 mb-2"></i>*/}
+      {/*      <p className="text-sm font-medium text-gray-900 dark:text-white">Manage Requests</p>*/}
+      {/*      <p className="text-xs text-gray-600 dark:text-gray-400">View and respond to design requests</p>*/}
+      {/*    </div>*/}
+      {/*    <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">*/}
+      {/*      <i className="ri-folder-line text-2xl text-purple-600 dark:text-purple-400 mb-2"></i>*/}
+      {/*      <p className="text-sm font-medium text-gray-900 dark:text-white">File Deliverables</p>*/}
+      {/*      <p className="text-xs text-gray-600 dark:text-gray-400">Upload and organize your work</p>*/}
+      {/*    </div>*/}
+      {/*    <div className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">*/}
+      {/*      <i className="ri-line-chart-line text-2xl text-green-600 dark:text-green-400 mb-2"></i>*/}
+      {/*      <p className="text-sm font-medium text-gray-900 dark:text-white">Track Performance</p>*/}
+      {/*      <p className="text-xs text-gray-600 dark:text-gray-400">Monitor royalties and metrics</p>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
 
       {/* Alerts Panel */}
       <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm mb-6">

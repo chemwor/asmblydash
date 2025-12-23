@@ -182,7 +182,6 @@ const MakerJobBoard: React.FC = () => {
           console.log('Job added to queue:', newJob);
 
           showToast('Job accepted successfully! Added to your queue.', 'success');
-          onJobUpdate?.();
         } catch (error) {
           console.error('Failed to accept job:', error);
           throw new Error('Failed to mark job as accepted');
@@ -193,7 +192,7 @@ const MakerJobBoard: React.FC = () => {
         setIsPreviewOpen(false);
 
         // Show success toast
-        showToast("Job accepted and added to your queue.");
+        showToast("Job accepted and added to your queue");
 
         console.log(`Job ${job.id} successfully accepted and added to queue`);
       } else {

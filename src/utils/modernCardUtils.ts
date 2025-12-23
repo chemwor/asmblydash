@@ -17,6 +17,9 @@ export const modernCardClasses = {
   // Title styling
   title: "text-lg font-semibold text-gray-900 dark:text-white mb-0",
 
+  // Content section
+  content: "space-y-4",
+
   // Info/alert boxes
   infoBox: "mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-lg border border-blue-200/40 dark:border-blue-800/40",
 

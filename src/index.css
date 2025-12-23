@@ -3,7 +3,7 @@
 @custom-variant dark (&:where([class=dark], [class=dark] *));
 
 @theme {
-  --font-body: "Inter", serif;
+  --font-body: "Inter Tight", sans-serif;
   --text-xs: 12px;
   --text-sm: 13px;
   --text-base: 14px;

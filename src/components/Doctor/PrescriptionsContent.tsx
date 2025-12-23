@@ -1,4 +1,3 @@
-
 import React from "react";
 
 const PrescriptionsContent: React.FC = () => {
@@ -23,16 +22,12 @@ const PrescriptionsContent: React.FC = () => {
               <img
                 src="/images/logo.svg"
                 alt="logo"
-                className="mb-[10px] dark:hidden"
-                width={100}
-                height={26}
+                className="mb-[10px] h-8 w-auto dark:hidden"
               />
               <img
-                src="/images/white-logo.svg"
+                src="/images/Web Desktop Dark Theme.svg"
                 alt="logo"
-                className="mb-[10px] hidden dark:block"
-                width={100}
-                height={26}
+                className="mb-[10px] h-8 w-auto hidden dark:block"
               />
               <span className="block md:text-md mt-[5px]">
                 S. Arrowhead Court Branford9

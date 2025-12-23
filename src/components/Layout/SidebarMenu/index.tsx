@@ -125,15 +125,18 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ toggleActive, navItems = [] }
             to="/dashboard/ecommerce"
             className="transition-none relative flex items-center outline-none"
           >
+            {/* Light theme logo */}
             <img
-              src="/images/logo-icon.svg"
-              alt="logo-icon"
-              width={26}
-              height={26}
+              src="/images/Web Desktop Light Theme.svg"
+              alt="logo"
+              className="h-10 w-auto block dark:hidden"
             />
-            <span className="font-bold text-black dark:text-white relative ltr:ml-[8px] rtl:mr-[8px] top-px text-xl">
-              Trezo
-            </span>
+            {/* Dark theme logo */}
+            <img
+              src="/images/Web Desktop Dark Theme.svg"
+              alt="logo"
+              className="h-10 w-auto hidden dark:block"
+            />
           </Link>
 
           <button
